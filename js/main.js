@@ -1,22 +1,49 @@
 /**
  * SRIG - Main Logic Control
- * Gestión de navegación, traducción dinámica y renderizado de componentes industriales.
+ * Gestión de navegación SPA, Menú Móvil, Cards Colapsables y Traducción.
  */
 
-let impactChart = null; // Instancia global de Chart.js
+let impactChart = null; // Instancia global de la gráfica
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Inicializar Iconos Lucide
     lucide.createIcons();
 
-    // 2. Determinar idioma inicial
+    // 2. Determinar estado inicial
     let currentLang = localStorage.getItem('lang') || 'es';
 
-    // 3. Configurar navegación (SPA)
+    // 3. Control del Menú Hamburguesa
+    const hamburger = document.getElementById('hamburger');
+    const mainNav = document.getElementById('mainNav');
+
+    if (hamburger && mainNav) {
+        hamburger.addEventListener('click', () => {
+            mainNav.classList.toggle('mobile-active');
+        });
+
+        // Cerrar menú al hacer clic en cualquier enlace (para móviles)
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('mobile-active');
+            });
+        });
+    }
+
+    // 4. Control de Cards Colapsables
+    document.querySelectorAll('.card.collapsible .card-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const card = header.parentElement;
+            card.classList.toggle('active');
+            // Re-inicializar iconos por si cambian
+            lucide.createIcons();
+        });
+    });
+
+    // 5. Configuración de Ruteo (SPA)
     window.addEventListener('hashchange', handleRoute);
     handleRoute();
 
-    // 4. Configurar Toggles (Idioma y Tema)
+    // 6. Toggles de Idioma y Tema
     const langBtn = document.getElementById('langToggle');
     if (langBtn) {
         langBtn.addEventListener('click', () => {
@@ -27,42 +54,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const themeBtn = document.getElementById('themeToggle');
     if (themeBtn) {
+        // Cargar tema guardado
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
+            themeBtn.textContent = '☀️';
+        }
+
         themeBtn.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
             document.body.classList.toggle('light-theme');
             const isDark = document.body.classList.contains('dark-theme');
             themeBtn.textContent = isDark ? '☀️' : '🌙';
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            // Refrescar gráfica para actualizar colores de fuente
+            // Refrescar gráfica para colores
             initChart(currentLang);
         });
     }
 
-    // Aplicar preferencia de tema guardada
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-theme');
-        document.body.classList.remove('light-theme');
-        themeBtn.textContent = '☀️';
-    }
-
-    // 5. Renderizado Inicial
+    // 7. Renderizado Inicial
     applyLanguage(currentLang);
 });
 
 /**
- * Gestiona la visibilidad de las secciones basado en el Hash de la URL
+ * Navegación entre secciones sin recargar página
  */
 function handleRoute() {
     const hash = location.hash.replace('#', '') || 'inicio';
     
-    // Cambiar visibilidad de páginas
+    // Cambiar visibilidad de secciones
     const pages = document.querySelectorAll('.page');
     pages.forEach(p => p.classList.remove('active'));
     
     const target = document.getElementById(hash);
     if (target) target.classList.add('active');
 
-    // Actualizar estado del menú
+    // Actualizar estado del menú de navegación
     const navLinks = document.querySelectorAll('.main-nav a');
     navLinks.forEach(link => {
         link.classList.toggle('active', link.getAttribute('href') === `#${hash}`);
@@ -72,111 +99,101 @@ function handleRoute() {
 }
 
 /**
- * Aplica traducciones y reconstruye componentes dinámicos
+ * Traduce el contenido y regenera componentes dinámicos
  */
 function applyLanguage(lang) {
     localStorage.setItem('lang', lang);
     const data = i18n[lang];
 
-    // Traducción de etiquetas simples
+    // Traducción de textos con data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (data[key]) el.innerHTML = data[key];
     });
 
-    // Actualizar botón
+    // Actualizar texto del botón de idioma
     document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
 
-    // Renderizar contenidos dinámicos complejos
+    // Ejecutar renderizado de componentes técnicos
     renderObjectives(data);
     renderPESTEL(data);
     renderFlow(data);
     renderEDT(data);
     renderRisks(data);
-    renderTeam(data, lang);
+    renderTeam(data);
     initChart(lang);
 }
 
-/**
- * Renderiza la lista de objetivos
- */
+// --- FUNCIONES DE RENDERIZADO TÉCNICO ---
+
 function renderObjectives(data) {
     const list = document.getElementById('objectiveList');
-    list.innerHTML = `
-        <li><i data-lucide="check-circle"></i> ${data.obj_item_1}</li>
-        <li><i data-lucide="check-circle"></i> ${data.obj_item_2}</li>
-        <li><i data-lucide="check-circle"></i> ${data.obj_item_3}</li>
-        <li><i data-lucide="check-circle"></i> ${data.obj_item_4}</li>
-    `;
+    if (!list) return;
+    const items = [data.obj_item_1, data.obj_item_2, data.obj_item_3, data.obj_item_4];
+    list.innerHTML = items.filter(i => i).map(item => `
+        <li><i data-lucide="check-circle" style="color: var(--accent); margin-right: 10px;"></i> ${item}</li>
+    `).join('');
     lucide.createIcons();
 }
 
-/**
- * Construye la cuadrícula PESTEL
- */
 function renderPESTEL(data) {
     const container = document.getElementById('pestelGrid');
+    if (!container) return;
     const items = [
-        { t: "P", d: data.pest_p }, { t: "E", d: data.pest_e },
-        { t: "S", d: data.pest_s }, { t: "T", d: data.pest_t },
-        { t: "E", d: data.pest_env }, { t: "L", d: data.pest_l }
+        { l: "P", d: data.pest_p }, { l: "E", d: data.pest_e },
+        { l: "S", d: data.pest_s }, { l: "T", d: data.pest_t },
+        { l: "E", d: data.pest_env }, { l: "L", d: data.pest_l }
     ];
     container.innerHTML = items.map(item => `
         <div class="pestel-box">
-            <div class="pestel-letter">${item.t}</div>
+            <div class="pestel-letter">${item.l}</div>
             <p>${item.d}</p>
         </div>
     `).join('');
 }
 
-/**
- * Genera el flujo visual de operación
- */
 function renderFlow(data) {
     const container = document.getElementById('flowSteps');
+    if (!container) return;
     const steps = [data.flow_1, data.flow_2, data.flow_3, data.flow_4, data.flow_5];
-    container.innerHTML = steps.map((s, i) => `
+    container.innerHTML = steps.filter(s => s).map((s, i) => `
         <div class="flow-step-item">
             <div class="step-circle">${i + 1}</div>
             <div class="step-text">${s}</div>
         </div>
-        ${i < steps.length - 1 ? '<div class="flow-connector"></div>' : ''}
+        ${i < 4 ? '<div class="flow-connector"></div>' : ''}
     `).join('');
 }
 
-/**
- * Renderiza la línea de tiempo de la EDT / WBS
- */
 function renderEDT(data) {
     const container = document.getElementById('edtTimeline');
+    if (!container) return;
     const phases = [data.edt_1, data.edt_2, data.edt_3, data.edt_4, data.edt_5];
-    container.innerHTML = phases.map(p => `<div class="edt-phase">${p}</div>`).join('');
+    container.innerHTML = phases.filter(p => p).map(p => `
+        <div class="edt-phase">${p}</div>
+    `).join('');
 }
 
-/**
- * Llenado de la Matriz de Riesgos
- */
 function renderRisks(data) {
     const body = document.getElementById('riskTableBody');
+    if (!body) return;
     const risks = [
         { n: data.r1_n, i: data.r1_i, m: data.r1_m },
         { n: data.r2_n, i: data.r2_i, m: data.r2_m },
         { n: data.r3_n, i: data.r3_i, m: data.r3_m }
     ];
-    body.innerHTML = risks.map(r => `
+    body.innerHTML = risks.filter(r => r.n).map(r => `
         <tr>
             <td><strong>${r.n}</strong></td>
             <td>${r.i}</td>
-            <td class="mitigation-cell">${r.m}</td>
+            <td style="color: var(--primary); font-weight: 600;">${r.m}</td>
         </tr>
     `).join('');
 }
 
-/**
- * Llenado de la Tabla de Equipo
- */
-function renderTeam(data, lang) {
+function renderTeam(data) {
     const body = document.getElementById('teamTableBody');
+    if (!body) return;
     const team = [
         { n: "Ortega Rojas David Alonso", r: data.role_dev },
         { n: "Alvidrez Garduño Julio Cesar", r: data.role_mfg },
@@ -191,9 +208,6 @@ function renderTeam(data, lang) {
     `).join('');
 }
 
-/**
- * Inicialización de Gráfica de Impacto (Chart.js)
- */
 function initChart(lang) {
     const ctx = document.getElementById('impactChart');
     if (!ctx) return;
@@ -224,11 +238,6 @@ function initChart(lang) {
                 legend: {
                     position: 'bottom',
                     labels: { color: textColor, font: { weight: '600' } }
-                },
-                title: {
-                    display: true,
-                    text: lang === 'es' ? 'Impacto en el Consumo de Agua' : 'Water Consumption Impact',
-                    color: textColor
                 }
             }
         }
