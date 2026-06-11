@@ -71,6 +71,12 @@ const i18n = {
         // --- SECCIÓN: PROCESO ---
         proc_title: "Flujo Operativo del Proceso",
         proc_desc: "El proceso SRIG garantiza que ninguna etapa continúe si se detectan condiciones anómalas, priorizando la seguridad industrial.",
+        proc_p1: "El Sistema de Riego Inteligente por Goteo (SRIG) opera bajo un ciclo de control cerrado que prioriza la eficiencia hídrica y la integridad de la flora. El funcionamiento se divide en 5 etapas críticas supervisadas por el microcontrolador ESP32.",
+tflow_1: "El sistema lee los sensores de humedad para determinar si el suelo requiere hidratación.",
+tflow_2: "Se cruza la información con el reloj de tiempo real y el modo de operación (Auto/Manual).",
+tflow_3: "El controlador activa los relevadores que energizan las electroválvulas de 24V.",
+tflow_4: "El sensor de caudal confirma que el agua realmente fluye, detectando posibles obstrucciones o fugas.",
+tflow_5: "Una vez alcanzado el nivel óptimo o el tiempo programado, el sistema cierra las válvulas y genera un reporte de estado.",
         flow_1: "Monitoreo de condiciones iniciales (Sensores).",
         flow_2: "Evaluación de lógica según modo activo.",
         flow_3: "Autorización de apertura de electroválvulas.",
@@ -185,6 +191,12 @@ const i18n = {
         // --- SECTION: PROCESS ---
         proc_title: "Operational Process Flow",
         proc_desc: "The SRIG process ensures that no stage continues if anomalous conditions are detected, prioritizing industrial safety.",
+        proc_p1: "The Smart Drip Irrigation System (SRIG) operates under a closed-loop control cycle prioritizing water efficiency and flora integrity. Operation is divided into 5 critical stages supervised by the ESP32 microcontroller.",
+tflow_1: "The system reads soil moisture sensors to determine if hydration is needed.",
+tflow_2: "Information is verified against the real-time clock and operation mode (Auto/Manual).",
+tflow_3: "The controller activates relays that power the 24V solenoid valves.",
+tflow_4: "The flow sensor confirms water is actually flowing, detecting possible clogs or leaks.",
+tflow_5: "Once the optimal level or scheduled time is reached, the system closes the valves and generates a status report."
         flow_1: "Initial condition monitoring (Sensors).",
         flow_2: "Logic evaluation based on active mode.",
         flow_3: "Authorization of solenoid valve opening.",
