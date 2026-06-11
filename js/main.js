@@ -204,14 +204,14 @@ function renderTeam(data) {
     const body = document.getElementById('teamTableBody');
     if (!body) return;
     const team = [
-        { n: "Ortega Rojas David Alonso", r: data.role_dev },
-        { n: "Alvidrez Garduño Julio Cesar", r: data.role_mfg },
-        { n: "Bretado Barrera Carolina", r: data.role_proc },
-        { n: "Trujillo López Juana Araceli", r: data.role_doc }
+        { n: "Ortega Rojas David Alonso", r: data.role_dev, e: "al24320557@utcj.edu.mx" },
+        { n: "Alvidrez Garduño Julio Cesar", r: data.role_mfg, e: "--" },
+        { n: "Bretado Barrera Carolina", r: data.role_proc, e: "--" },
+        { n: "Trujillo López Juana Araceli", r: data.role_doc, e: "--" }
     ];
     body.innerHTML = team.map(t => `
         <tr>
-            <td>${t.n}</td>
+            <td><strong>${t.n}</strong><br><small>${t.e}</small></td>
             <td><span class="role-badge">${t.r}</span></td>
         </tr>
     `).join('');
@@ -276,21 +276,4 @@ function renderPESTEL(data) {
     `).join('');
 }
 
-function renderTeam(data) {
-    const body = document.getElementById('teamTableBody');
-    if (!body) return;
 
-    const team = [
-        { n: "Ortega Rojas David Alonso", r: data.role_1, e: "al24320557@utcj.edu.mx" },
-        { n: "Alvidrez Garduño Julio Cesar", r: data.role_2, e: "--" },
-        { n: "Bretado Barrera Carolina", r: data.role_3, e: "--" },
-        { n: "Trujillo López Juana Araceli", r: data.role_4, e: "--" }
-    ];
-
-    body.innerHTML = team.map(t => `
-        <tr>
-            <td><strong>${t.n}</strong><br><small>${t.e}</small></td>
-            <td><span class="role-badge">${t.r}</span></td>
-        </tr>
-    `).join('');
-}
