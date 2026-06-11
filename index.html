@@ -8,130 +8,102 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="light">
+<body>
 
 <header class="navbar">
     <div class="nav-container">
         <div class="brand">
-            <img src="img/logo-srig.png" alt="SRIG" class="logo">
-            <span class="brand-name">SRIG <small>UTCJ</small></span>
+            <img src="img/logo-srig.png" class="logo">
+            <span>SRIG <small>Systemica</small></span>
         </div>
         <nav class="nav-menu">
             <a href="#inicio" data-i18n="nav_inicio"></a>
             <a href="#business" data-i18n="nav_business"></a>
             <a href="#sistema" data-i18n="nav_sistema"></a>
-            <a href="#manual" data-i18n="nav_manual"></a>
             <a href="#arquitectura" data-i18n="nav_arquitectura"></a>
             <a href="#contacto" data-i18n="nav_contacto"></a>
         </nav>
-        <div class="nav-actions">
-            <button id="langToggle" class="btn-toggle">EN</button>
-            <button id="themeToggle" class="btn-toggle">🌙</button>
-        </div>
+        <button id="langToggle" class="btn-sm">EN</button>
     </div>
 </header>
 
 <main class="wrapper">
-    <!-- SECCIÓN INICIO -->
+    <!-- HERO -->
     <section id="inicio" class="page active">
-        <div class="hero-card">
+        <div class="hero-box">
             <h1 class="gradient-text" data-i18n="hero_title"></h1>
-            <p class="lead" data-i18n="hero_sub"></p>
-            <div class="hero-visual">
-                <img src="img/instalacion-real.jpg" class="hero-img">
+            <p data-i18n="hero_sub"></p>
+            <div class="badge-grid">
+                <span>PMBOK</span><span>LEAN</span><span>APQP</span>
             </div>
         </div>
     </section>
 
     <!-- BUSINESS CASE -->
     <section id="business" class="page">
-        <h2 class="section-title" data-i18n="biz_title"></h2>
-        <p class="subtitle" data-i18n="biz_desc"></p>
-        <div class="kpi-grid">
-            <div class="kpi-card">
-                <h3 data-i18n="biz_kpi_1_val"></h3>
-                <p data-i18n="biz_kpi_1"></p>
-            </div>
-            <div class="kpi-card">
-                <h3 data-i18n="biz_kpi_2_val"></h3>
-                <p data-i18n="biz_kpi_2"></p>
-            </div>
-            <div class="kpi-card">
-                <h3 data-i18n="biz_kpi_3_val"></h3>
-                <p data-i18n="biz_kpi_3"></p>
-            </div>
+        <h2 data-i18n="biz_title"></h2>
+        <div class="card biz-card">
+            <h4 data-i18n="biz_company"></h4>
+            <p data-i18n="biz_desc"></p>
+            <p><strong>30%-50% Savings</strong></p>
         </div>
-        <div class="chart-section card">
-            <canvas id="savingsChart"></canvas>
+        <div class="chart-container card">
+            <canvas id="efficiencyChart"></canvas>
+        </div>
+        
+        <h3 data-i18n="swot_title"></h3>
+        <div class="swot-grid">
+            <div class="swot-item s"> <h5 data-i18n="f_title"></h5> <p data-i18n="f_txt"></p> </div>
+            <div class="swot-item w"> <h5 data-i18n="d_title"></h5> <p data-i18n="d_txt"></p> </div>
+            <div class="swot-item o"> <h5 data-i18n="o_title"></h5> <p data-i18n="o_txt"></p> </div>
+            <div class="swot-item t"> <h5 data-i18n="a_title"></h5> <p data-i18n="a_txt"></p> </div>
         </div>
     </section>
 
-    <!-- FUNCIONAMIENTO -->
-    <section id="sistema" class="page">
-        <h2 class="section-title" data-i18n="ops_title"></h2>
-        <div class="infographic">
-            <div class="info-step">
-                <div class="step-num">1</div>
-                <h4 data-i18n="ops_step_1"></h4>
-                <p data-i18n="ops_step_1_txt"></p>
-            </div>
-            <div class="info-divider"></div>
-            <div class="info-step">
-                <div class="step-num">2</div>
-                <h4 data-i18n="ops_step_2"></h4>
-                <p data-i18n="ops_step_2_txt"></p>
-            </div>
-            <div class="info-divider"></div>
-            <div class="info-step">
-                <div class="step-num">3</div>
-                <h4 data-i18n="ops_step_3"></h4>
-                <p data-i18n="ops_step_3_txt"></p>
-            </div>
-        </div>
-        <img src="img/flujo-operacion.png" class="diag-fixed">
-    </section>
-
-    <!-- MANUAL DE USO -->
-    <section id="manual" class="page">
-        <h2 class="section-title" data-i18n="manual_title"></h2>
-        <div class="grid-3">
-            <div class="card-glass">
-                <i data-lucide="zap"></i>
-                <h4 data-i18n="mode_auto"></h4>
-                <p data-i18n="mode_auto_txt"></p>
-            </div>
-            <div class="card-glass">
-                <i data-lucide="clock"></i>
-                <h4 data-i18n="mode_timer"></h4>
-                <p data-i18n="mode_timer_txt"></p>
-            </div>
-            <div class="card-glass">
-                <i data-lucide="hand"></i>
-                <h4 data-i18n="mode_manual"></h4>
-                <p data-i18n="mode_manual_txt"></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ARQUITECTURA -->
+    <!-- ARQUITECTURA (Diagrama Real HTML) -->
     <section id="arquitectura" class="page">
-        <h2 class="section-title">Ingeniería del Sistema</h2>
-        <div class="engineering-layout">
-            <div class="card-tech">
-                <img src="img/arquitectura.png" class="diag-fixed">
-                <div class="tech-spec">
-                    <h5>Core: ESP32 Dual Core</h5>
-                    <h5>Comm: WiFi + WebSockets</h5>
-                    <h5>Power: 24V DC / 110V AC isolated</h5>
-                </div>
+        <h2 data-i18n="eng_title"></h2>
+        <div class="diagram-flow">
+            <div class="diag-node">
+                <i data-lucide="microscope"></i>
+                <h4 data-i18n="block_input"></h4>
+                <span data-i18n="block_input_sub"></span>
+            </div>
+            <div class="diag-arrow"></div>
+            <div class="diag-node highlight">
+                <i data-lucide="cpu"></i>
+                <h4 data-i18n="block_logic"></h4>
+                <span data-i18n="block_logic_sub"></span>
+            </div>
+            <div class="diag-arrow"></div>
+            <div class="diag-node">
+                <i data-lucide="droplets"></i>
+                <h4 data-i18n="block_output"></h4>
+                <span data-i18n="block_output_sub"></span>
             </div>
         </div>
+        <div class="tech-images">
+            <img src="img/instalacion-real.jpg" class="img-preview">
+            <img src="img/arquitectura.png" class="img-preview">
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="page">
+        <h2 data-i18n="cont_title"></h2>
+        <table class="modern-table">
+            <thead>
+                <tr><th data-i18n="cont_resp"></th><th data-i18n="cont_role"></th><th>Email</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Ortega Rojas David Alonso</td><td>Ingeniero de Proyecto / Desarrollador SRIG</td><td>al24320557@utcj.edu.mx</td></tr>
+                <tr><td>Alvidrez Garduño Julio Cesar</td><td>Ingeniero de Manufactura</td><td>--</td></tr>
+                <tr><td>Bretado Barrera Carolina</td><td>Control de Procesos</td><td>--</td></tr>
+                <tr><td>Trujillo López Juana Araceli</td><td>Documentación y Calidad</td><td>--</td></tr>
+            </tbody>
+        </table>
     </section>
 </main>
-
-<footer class="main-footer">
-    <p data-i18n="footer_text"></p>
-</footer>
 
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
