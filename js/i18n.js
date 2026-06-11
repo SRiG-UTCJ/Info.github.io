@@ -1,66 +1,79 @@
 const i18n = {
   es: {
-    page_title: "SRIG · Smart Irrigation Solutions",
+    page_title: "SRIG · RATIOMA Systemica",
     nav_inicio: "Inicio",
+    nav_business: "Plan de Negocio",
     nav_sistema: "Funcionamiento",
-    nav_business: "Valor de Negocio",
-    nav_manual: "Manual de Uso",
+    nav_manual: "Manual",
     nav_arquitectura: "Ingeniería",
     nav_contacto: "Contacto",
-    
-    // Inicio
-    hero_title: "SRIG: Inteligencia Hídrica",
-    hero_sub: "Automatización de precisión para la gestión sostenible de áreas verdes en la UTCJ.",
-    
-    // Business Case
-    biz_title: "Justificación y Valor (Business Case)",
-    biz_desc: "El SRIG no es solo riego; es una inversión en eficiencia operativa.",
-    biz_kpi_1: "Ahorro de Agua", biz_kpi_1_val: "40%",
-    biz_kpi_2: "Reducción de Costos", biz_kpi_2_val: "25%",
-    biz_kpi_3: "Disponibilidad", biz_kpi_3_val: "24/7",
-    
-    // Funcionamiento
-    ops_title: "Proceso Operativo",
-    ops_step_1: "Sensado", ops_step_1_txt: "Monitoreo constante de humedad y flujo.",
-    ops_step_2: "Análisis", ops_step_2_txt: "El ESP32 evalúa condiciones según el modo.",
-    ops_step_3: "Acción", ops_step_3_txt: "Apertura controlada de electroválvulas.",
-    
-    // Manual
-    manual_title: "Modos de Operación",
-    mode_auto: "Modo Automático", mode_auto_txt: "El sistema riega solo cuando la humedad es baja.",
-    mode_timer: "Modo Programado", mode_timer_txt: "Riego en horarios específicos para evitar evaporación.",
-    mode_manual: "Modo Forzado", mode_manual_txt: "Activación inmediata desde la interfaz web o botón físico.",
 
-    footer_text: "SRIG · Proyecto de Ingeniería Industrial · UTCJ 2026"
+    // Hero
+    hero_title: "RATIOMA Systemica",
+    hero_sub: "Diseño y desarrollo de forestación inteligente mediante SRIG (Sistema de Riego Inteligente por Goteo).",
+    
+    // Business Case (Basado en PDF)
+    biz_title: "Modelo de Negocio",
+    biz_company: "Empresa: RATIOMA Systemica S.A. DE C.V.",
+    biz_desc: "Dedicados a sistemas modulares automatizados para el uso eficiente de recursos en entornos urbanos y desérticos como Cd. Juárez.",
+    biz_goal: "Objetivo: Ahorro de agua del 30% al 50% comparado con métodos tradicionales.",
+    chart_label_manual: "Consumo Tradicional",
+    chart_label_srig: "Consumo SRIG (Optimizado)",
+
+    // FODA / SWOT
+    swot_title: "Análisis Estratégico (FODA)",
+    f_title: "Fortalezas", f_txt: "Alineación con PMBOK/APQP, apoyo institucional UTCJ, ahorro hídrico comprobado.",
+    o_title: "Oportunidades", o_txt: "Escalabilidad a sensores inteligentes, réplica en otras áreas de la ciudad.",
+    d_title: "Debilidades", d_txt: "Dependencia de red hídrica, documentación en fase de desarrollo.",
+    a_title: "Amenazas", a_txt: "Clima extremo (-10°C a 45°C), vandalismo, escasez crítica de agua.",
+
+    // Ingeniería (Diagrama Real)
+    eng_title: "Arquitectura del Sistema",
+    block_input: "SENSORES / ENTRADA",
+    block_input_sub: "Humedad, Flujo, Nivel",
+    block_logic: "PROCESAMIENTO (ESP32)",
+    block_logic_sub: "Lógica de Control y Web Server",
+    block_output: "ACTUADORES / SALIDA",
+    block_output_sub: "Electroválvulas, Bomba",
+
+    // Contacto
+    cont_title: "Equipo de Proyecto",
+    cont_resp: "Responsable", cont_role: "Función",
   },
   en: {
-    page_title: "SRIG · Smart Irrigation Solutions",
+    page_title: "SRIG · RATIOMA Systemica",
     nav_inicio: "Home",
+    nav_business: "Business Plan",
     nav_sistema: "Operation",
-    nav_business: "Business Case",
-    nav_manual: "User Guide",
+    nav_manual: "Manual",
     nav_arquitectura: "Engineering",
     nav_contacto: "Contact",
-    
-    hero_title: "SRIG: Water Intelligence",
-    hero_sub: "Precision automation for sustainable landscape management at UTCJ.",
-    
-    biz_title: "Business Case & Value",
-    biz_desc: "SRIG is not just irrigation; it's an investment in operational efficiency.",
-    biz_kpi_1: "Water Saving", biz_kpi_1_val: "40%",
-    biz_kpi_2: "Cost Reduction", biz_kpi_2_val: "25%",
-    biz_kpi_3: "Availability", biz_kpi_3_val: "24/7",
-    
-    ops_title: "Operational Process",
-    ops_step_1: "Sensing", ops_step_1_txt: "Constant moisture and flow monitoring.",
-    ops_step_2: "Analysis", ops_step_2_txt: "ESP32 evaluates conditions based on active mode.",
-    ops_step_3: "Action", ops_step_3_txt: "Controlled activation of solenoid valves.",
-    
-    manual_title: "Operation Modes",
-    mode_auto: "Automatic Mode", mode_auto_txt: "System irrigates only when moisture is low.",
-    mode_timer: "Scheduled Mode", mode_timer_txt: "Irrigation at specific times to prevent evaporation.",
-    mode_manual: "Manual Override", mode_manual_txt: "Immediate activation from web UI or physical button.",
 
-    footer_text: "SRIG · Industrial Engineering Project · UTCJ 2026"
+    hero_title: "RATIOMA Systemica",
+    hero_sub: "Design and development of smart forestation through SRIG (Smart Drip Irrigation System).",
+
+    biz_title: "Business Model",
+    biz_company: "Company: RATIOMA Systemica S.A. DE C.V.",
+    biz_desc: "Dedicated to automated modular systems for resource efficiency in urban and desert environments like Cd. Juárez.",
+    biz_goal: "Goal: 30% to 50% water savings compared to traditional methods.",
+    chart_label_manual: "Traditional Consumption",
+    chart_label_srig: "SRIG Consumption (Optimized)",
+
+    swot_title: "Strategic Analysis (SWOT)",
+    f_title: "Strengths", f_txt: "PMBOK/APQP Alignment, UTCJ support, proven water savings.",
+    o_title: "Opportunities", o_txt: "Scalability to smart sensors, replication in other city areas.",
+    d_title: "Weaknesses", d_txt: "Water grid dependency, documentation in progress.",
+    a_title: "Threats", a_txt: "Extreme climate (-10°C to 45°C), vandalism, critical water shortage.",
+
+    eng_title: "System Architecture",
+    block_input: "SENSORS / INPUT",
+    block_input_sub: "Moisture, Flow, Level",
+    block_logic: "PROCESSING (ESP32)",
+    block_logic_sub: "Control Logic & Web Server",
+    block_output: "ACTUATORS / OUTPUT",
+    block_output_sub: "Solenoid Valves, Pump",
+
+    cont_title: "Project Team",
+    cont_resp: "Responsible", cont_role: "Role",
   }
 };
