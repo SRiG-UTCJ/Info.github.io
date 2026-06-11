@@ -1,113 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicializar Iconos
     lucide.createIcons();
+    let currentLang = localStorage.getItem('lang') || 'es';
 
-    // Inicializar Animaciones
-    AOS.init({
-        duration: 1000,
-        once: true
-    });
+    // Manejo de Páginas
+    const handleRoute = () => {
+        const id = location.hash.replace('#', '') || 'inicio';
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        const target = document.getElementById(id);
+        if(target) target.classList.add('active');
+        
+        // Scroll al inicio
+        window.scrollTo(0,0);
+    };
 
-    // Configuración de la Gráfica de Eficiencia
-    const ctx = document.getElementById('efficiencyChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Riego Manual', 'SRIG (Optimizado)'],
-            datasets: [{
-                label: 'Consumo de Agua (Litros/Mes)',
-                data: [4500, 2700],
-                backgroundColor: ['#cbd5e1', '#1f6fae'],
-                borderRadius: 10
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { display: false },
-                title: { display: true, text: 'Comparativa de Consumo Hídrico' }
-            }
-        }
-    });
-
-    // Dark Mode Toggle
-    const themeBtn = document.getElementById('themeToggle');
-    themeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        themeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-    });
-});
-// Variable global de idioma
-let currentLang = localStorage.getItem('lang') || 'es';
-
-document.addEventListener('DOMContentLoaded', () => {
-    lucide.createIcons();
-    initChart();
-    applyLanguage(currentLang);
-
-    // Navegación por Hash
     window.addEventListener('hashchange', handleRoute);
     handleRoute();
 
-    // Toggles
-    document.getElementById('langToggle').addEventListener('click', () => {
-        currentLang = currentLang === 'es' ? 'en' : 'es';
-        applyLanguage(currentLang);
-    });
-
-    document.getElementById('themeToggle').addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-    });
-});
-
-function handleRoute() {
-    const id = location.hash.replace('#', '') || 'inicio';
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
-    
-    const target = document.getElementById(id);
-    if(target) target.classList.add('active');
-    
-    const navLink = document.querySelector(`.main-nav a[href="#${id}"]`);
-    if(navLink) navLink.classList.add('active');
-
-    // Breadcrumb
-    document.getElementById('breadcrumb').textContent = id.charAt(0).toUpperCase() + id.slice(1);
-}
-
-function applyLanguage(lang) {
-    localStorage.setItem('lang', lang);
-    document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
-    
-    // Buscar todos los elementos con data-i18n
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (i18n[lang][key]) {
-            el.innerHTML = i18n[lang][key]; // Usamos innerHTML para permitir negritas
-        }
-    });
-}
-
-function initChart() {
-    const ctx = document.getElementById('efficiencyChart');
-    if(!ctx) return;
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Manual', 'SRIG'],
-            datasets: [{
-                data: [100, 60],
-                backgroundColor: ['#cbd5e1', '#1f6fae']
-            }]
-        },
-        options: { plugins: { title: { display: true, text: 'Consumo de Agua %' } } }
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    let lang = localStorage.getItem('lang') || 'es';
-    
-    // Función de Idioma
+    // Idioma
     const applyLang = (l) => {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
@@ -117,35 +26,40 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('lang', l);
     };
 
-    // Navegación
-    const handleRoute = () => {
-        const id = location.hash.replace('#', '') || 'inicio';
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        const target = document.getElementById(id);
-        if(target) target.classList.add('active');
-    };
-
-    window.addEventListener('hashchange', handleRoute);
     document.getElementById('langToggle').addEventListener('click', () => {
-        lang = lang === 'es' ? 'en' : 'es';
-        applyLang(lang);
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        applyLang(currentLang);
     });
 
+    // Tema
     document.getElementById('themeToggle').addEventListener('click', () => {
         document.body.classList.toggle('dark');
     });
 
-    // Gráfica inicial
+    // Gráfica de Ahorro
     const ctx = document.getElementById('savingsChart').getContext('2d');
     new Chart(ctx, {
-        type: 'doughnut',
+        type: 'line',
         data: {
-            labels: ['Desperdicio', 'Ahorro SRIG'],
-            datasets: [{ data: [60, 40], backgroundColor: ['#e2e8f0', '#1f6fae'] }]
+            labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4'],
+            datasets: [{
+                label: 'Consumo Manual (L)',
+                data: [1200, 1250, 1180, 1300],
+                borderColor: '#cbd5e1',
+                fill: false
+            }, {
+                label: 'Consumo SRIG (L)',
+                data: [800, 750, 780, 720],
+                borderColor: '#1f6fae',
+                backgroundColor: 'rgba(31, 111, 174, 0.1)',
+                fill: true
+            }]
         },
-        options: { plugins: { title: { display: true, text: 'Eficiencia Hídrica' } } }
+        options: {
+            responsive: true,
+            plugins: { title: { display: true, text: 'Eficiencia Hídrica: SRIG vs Tradicional' } }
+        }
     });
 
-    applyLang(lang);
-    handleRoute();
+    applyLang(currentLang);
 });
