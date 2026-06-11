@@ -200,7 +200,9 @@ function renderSpecs(data) {
     const specs = [
         { k: data.spec_volt, v: data.spec_volt_val },
         { k: data.spec_type, v: data.spec_type_val },
-        { k: data.spec_config, v: data.spec_config_val }
+        { k: data.spec_config, v: data.spec_config_val },
+        { k: data.spec_comp, v: data.spec_comp_val },
+        { k: data.spec_carac, v: data.spec_carac_val }
     ];
     table.innerHTML = `<table class="tech-table">` + 
         specs.filter(s => s.k).map(s => `<tr><td><strong>${s.k}</strong></td><td>${s.v}</td></tr>`).join('') + 
