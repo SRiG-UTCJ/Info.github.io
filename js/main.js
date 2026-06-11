@@ -1,63 +1,64 @@
-let efficiencyChart;
-
-function initChart(lang) {
-    const ctx = document.getElementById('savingsChart').getContext('2d');
-    if (efficiencyChart) efficiencyChart.destroy();
-
-    efficiencyChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [i18n[lang].chart_manual, i18n[lang].chart_srig],
-            datasets: [{
-                data: [100, 55], // Basado en el ahorro del 45% promedio del PDF
-                backgroundColor: ['#cbd5e1', '#1f6fae'],
-                borderRadius: 10
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { display: false },
-                title: { display: true, text: lang === 'es' ? 'Eficiencia de Consumo %' : 'Consumption Efficiency %' }
-            },
-            scales: { y: { beginAtZero: true, max: 100 } }
-        }
-    });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
-    let currentLang = localStorage.getItem('lang') || 'es';
+    let lang = localStorage.getItem('lang') || 'es';
 
-    const applyLang = (l) => {
+    const team = [
+        { n: "Ortega Rojas David", r: "Desarrollo SRIG / Technical Lead", e: "al24320557@utcj.edu.mx" },
+        { n: "Alvidrez Garduño Julio", r: "Ingeniería de Manufactura", e: "--" },
+        { n: "Bretado Barrera Carolina", r: "Control de Procesos", e: "--" },
+        { n: "Trujillo López Juana", r: "Documentación y Calidad", e: "--" }
+    ];
+
+    const risks = [
+        { r: "Asfixia Radicular", i: "Pérdida de árboles", m: "Ajuste de programación y sensores" },
+        { r: "Vandalismo", i: "Daño a electrónica", m: "Gabinete NEMA y monitoreo" },
+        { r: "Falla Presostato", i: "Falta de riego", m: "Revisiones semanales y alarmas" }
+    ];
+
+    const apply = (l) => {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (i18n[l][key]) el.textContent = i18n[l][key];
+            if(i18n[l][key]) el.innerHTML = i18n[l][key];
         });
+
+        // Inyectar Listas
+        document.getElementById('obj_list').innerHTML = `<li>${i18n[l].obj_1}</li><li>${i18n[l].obj_2}</li><li>${i18n[l].obj_3}</li>`;
+        
+        const pestel = ["Político", "Económico", "Social", "Tecnológico", "Ecológico", "Legal"];
+        document.getElementById('pestel_container').innerHTML = pestel.map(p => `<div class="b"><strong>${p}</strong><br>Análisis ${l}</div>`).join('');
+
+        document.getElementById('risk_body').innerHTML = risks.map(r => `<tr><td>${r.r}</td><td>${r.i}</td><td>${r.m}</td></tr>`).join('');
+        document.getElementById('team_body').innerHTML = team.map(t => `<tr><td>${t.n}</td><td>${t.r}</td><td>${t.e}</td></tr>`).join('');
+        
         document.getElementById('langToggle').textContent = l === 'es' ? 'EN' : 'ES';
-        localStorage.setItem('lang', l);
-        initChart(l);
+        renderCharts(l);
+    };
+
+    const renderCharts = (l) => {
+        const commonOptions = { responsive: true, plugins: { legend: { display: false } } };
+        new Chart(document.getElementById('savingsChart'), {
+            type: 'doughnut',
+            data: { labels: ['Ahorro', 'Consumo'], datasets: [{ data: [45, 55], backgroundColor: ['#22c55e', '#1f6fae'] }] },
+            options: commonOptions
+        });
+        new Chart(document.getElementById('marketChart'), {
+            type: 'bar',
+            data: { labels: ['Manual', 'SRIG'], datasets: [{ data: [100, 60], backgroundColor: ['#94a3b8', '#1f6fae'] }] },
+            options: commonOptions
+        });
     };
 
     const handleRoute = () => {
         const id = location.hash.replace('#', '') || 'inicio';
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        const target = document.getElementById(id);
-        if (target) target.classList.add('active');
-        window.scrollTo(0,0);
+        document.getElementById(id)?.classList.add('active');
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
     };
 
     window.addEventListener('hashchange', handleRoute);
-    document.getElementById('langToggle').addEventListener('click', () => {
-        currentLang = currentLang === 'es' ? 'en' : 'es';
-        applyLang(currentLang);
-    });
+    document.getElementById('langToggle').addEventListener('click', () => { lang = lang === 'es' ? 'en' : 'es'; apply(lang); });
+    document.getElementById('themeToggle').addEventListener('click', () => document.body.classList.toggle('dark'));
 
-    document.getElementById('themeToggle').addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        document.getElementById('themeToggle').textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-    });
-
-    applyLang(currentLang);
+    apply(lang);
     handleRoute();
 });
