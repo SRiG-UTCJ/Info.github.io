@@ -40,7 +40,7 @@ const i18n = {
         foda_a_txt: "Clima extremo que afecta la supervivencia; Vandalismo en el área; Escasez o mala distribución de agua en la red.",
         pestel_title: "Análisis de Macroentorno (PESTEL)",
         // Detalles PESTEL
-        pest_p: "Normativas ambientales y apoyo institucional universitario.",
+        pest_p: "Existencia de normativas ambientales y programas de reforestación\nPosible apoyo institucional por parte de la universidad\nDependencia de autorizaciones para intervenir áreas del campus.",
         pest_e: "Presupuesto limitado frente a costos de materiales y árboles.",
         pest_s: "Beneficio directo a estudiantes y conciencia ambiental creciente.",
         pest_t: "Uso de microcontroladores y automatización de bajo costo.",
