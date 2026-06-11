@@ -311,7 +311,64 @@ body {
 .swot-card.o { background: #3b82f6; } /* Azul - Oportunidades */
 .swot-card.d { background: #f59e0b; } /* Naranja - Debilidades */
 .swot-card.a { background: #ef4444; } /* Rojo - Amenazas */
+/* Contenedor principal de los indicadores */
+.savings-kpi {
+    display: flex;
+    gap: 20px;
+    margin: 25px 0;
+    justify-content: center; /* Centra el KPI si solo hay uno */
+}
 
+/* La caja del indicador */
+.kpi-box {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    text-align: center;
+    min-width: 200px;
+    box-shadow: 0 10px 20px rgba(31, 111, 174, 0.2);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Efecto al pasar el mouse */
+.kpi-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(31, 111, 174, 0.3);
+}
+
+/* El valor numérico (ej: 40%) */
+.kpi-box h4 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+/* El texto descriptivo (ej: Ahorro de Agua) */
+.kpi-box span {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 8px;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 480px) {
+    .savings-kpi {
+        flex-direction: column;
+        align-items: center;
+    }
+    .kpi-box {
+        width: 100%;
+        max-width: 280px;
+    }
+}
 /* --- GALERÍA DE INGENIERÍA (IMÁGENES PEQUEÑAS) --- */
 .tech-gallery-v3 {
     display: flex;
