@@ -1,8 +1,9 @@
 const i18n = {
     es: {
-        // --- GLOBAL & NAV ---
+        // --- NAVEGACIÓN (IDs para las pestañas) ---
         page_title: "SRIG · RATIOMA Systemica",
         nav_inicio: "Inicio",
+        nav_negocio: "Negocio",
         nav_estrategia: "Estrategia",
         nav_arquitectura: "Ingeniería",
         nav_proceso: "Proceso",
@@ -27,7 +28,9 @@ const i18n = {
         obj_item_2: "Dimensionar caudal, presión y componentes hidráulicos/electrónicos.",
         obj_item_3: "Implementar control inteligente SRIG con monitoreo de flujo.",
         obj_item_4: "Validar el funcionamiento en condiciones reales de operación.",
-
+/// --- MODELO DE NEGOCIO ---
+        biz_comp_name: "RATIOMA Systemica S.A. de C.V.",
+        biz_mission: "Empresa dedicada al diseño e integración de sistemas modulares automatizados enfocados en el uso eficiente de recursos.",
         // --- SECCIÓN: ESTRATEGIA (FODA & PESTEL) ---
         str_title: "Análisis Estratégico",
         foda_title: "Matriz FODA",
@@ -111,9 +114,10 @@ const i18n = {
     },
 
     en: {
-        // --- GLOBAL & NAV ---
+         // --- NAVIGATION ---
         page_title: "SRIG · RATIOMA Systemica",
         nav_inicio: "Home",
+        nav_negocio: "Business",
         nav_estrategia: "Strategy",
         nav_arquitectura: "Engineering",
         nav_proceso: "Process",
@@ -128,6 +132,10 @@ const i18n = {
         hero_sub: "Design and development of forestation for the HJ garden through the implementation of a Smart Drip Irrigation System (SRIG).",
         intro_title: "Introduction and Justification",
         intro_p1: "In Ciudad Juárez, due to its desert climate, efficient water use is essential. SRIG addresses the need to optimize water resources in urban environments where traditional methods cause waste. By supplying water directly to the root zone, we reduce evaporation losses and achieve efficiencies exceeding 90%.",
+        // --- BUSINESS ---
+        biz_comp_name: "RATIOMA Systemica S.A. de C.V.",
+        biz_mission: "Company dedicated to the design and integration of automated modular systems.",
+        
         kpi_water_val: "30-50%",
         kpi_water_txt: "Water Savings",
         kpi_eff_val: ">90%",
