@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title"></title>
+    <title data-i18n="page_title">SRIG · RATIOMA Systemica</title>
+    <!-- Librerías -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/styles.css">
@@ -13,97 +14,134 @@
 <header class="navbar">
     <div class="nav-container">
         <div class="brand">
-            <img src="img/logo-srig.png" class="logo">
-            <span>SRIG <small>Systemica</small></span>
+            <img src="img/logo-srig.png" class="logo" alt="SRIG">
+            <div class="brand-text">
+                <span class="company">RATIOMA Systemica</span>
+                <span class="project">SRIG · UTCJ</span>
+            </div>
         </div>
         <nav class="nav-menu">
             <a href="#inicio" data-i18n="nav_inicio"></a>
             <a href="#business" data-i18n="nav_business"></a>
-            <a href="#sistema" data-i18n="nav_sistema"></a>
-            <a href="#arquitectura" data-i18n="nav_arquitectura"></a>
+            <a href="#ingenieria" data-i18n="nav_arquitectura"></a>
+            <a href="#gestion" data-i18n="nav_gestion"></a>
             <a href="#contacto" data-i18n="nav_contacto"></a>
         </nav>
-        <button id="langToggle" class="btn-sm">EN</button>
+        <div class="nav-actions">
+            <button id="langToggle" class="btn-tool">EN</button>
+            <button id="themeToggle" class="btn-tool">🌙</button>
+        </div>
     </div>
 </header>
 
 <main class="wrapper">
-    <!-- HERO -->
+    <!-- INICIO -->
     <section id="inicio" class="page active">
-        <div class="hero-box">
+        <div class="hero">
             <h1 class="gradient-text" data-i18n="hero_title"></h1>
-            <p data-i18n="hero_sub"></p>
-            <div class="badge-grid">
-                <span>PMBOK</span><span>LEAN</span><span>APQP</span>
+            <p class="lead" data-i18n="hero_sub"></p>
+            <div class="method-badges">
+                <span>PMBOK</span><span>LEAN MANUFACTURING</span><span>APQP</span>
             </div>
+        </div>
+        <div class="card intro-card">
+            <h3 data-i18n="obj_title"></h3>
+            <p data-i18n="obj_desc"></p>
         </div>
     </section>
 
-    <!-- BUSINESS CASE -->
+    <!-- BUSINESS & FODA -->
     <section id="business" class="page">
-        <h2 data-i18n="biz_title"></h2>
-        <div class="card biz-card">
-            <h4 data-i18n="biz_company"></h4>
-            <p data-i18n="biz_desc"></p>
-            <p><strong>30%-50% Savings</strong></p>
+        <h2 class="section-title" data-i18n="biz_title"></h2>
+        <div class="grid-2">
+            <div class="card chart-box">
+                <canvas id="savingsChart"></canvas>
+            </div>
+            <div class="card biz-info">
+                <h4 data-i18n="biz_comp_name"></h4>
+                <p data-i18n="biz_mission"></p>
+                <div class="savings-badge" data-i18n="savings_stat"></div>
+            </div>
         </div>
-        <div class="chart-container card">
-            <canvas id="efficiencyChart"></canvas>
-        </div>
-        
-        <h3 data-i18n="swot_title"></h3>
+
+        <h3 class="section-title" data-i18n="foda_title"></h3>
         <div class="swot-grid">
-            <div class="swot-item s"> <h5 data-i18n="f_title"></h5> <p data-i18n="f_txt"></p> </div>
-            <div class="swot-item w"> <h5 data-i18n="d_title"></h5> <p data-i18n="d_txt"></p> </div>
-            <div class="swot-item o"> <h5 data-i18n="o_title"></h5> <p data-i18n="o_txt"></p> </div>
-            <div class="swot-item t"> <h5 data-i18n="a_title"></h5> <p data-i18n="a_txt"></p> </div>
+            <div class="swot-card s"><h5 data-i18n="foda_f"></h5><p data-i18n="foda_f_txt"></p></div>
+            <div class="swot-card w"><h5 data-i18n="foda_d"></h5><p data-i18n="foda_d_txt"></p></div>
+            <div class="swot-card o"><h5 data-i18n="foda_o"></h5><p data-i18n="foda_o_txt"></p></div>
+            <div class="swot-card t"><h5 data-i18n="foda_a"></h5><p data-i18n="foda_a_txt"></p></div>
         </div>
     </section>
 
-    <!-- ARQUITECTURA (Diagrama Real HTML) -->
-    <section id="arquitectura" class="page">
-        <h2 data-i18n="eng_title"></h2>
-        <div class="diagram-flow">
-            <div class="diag-node">
-                <i data-lucide="microscope"></i>
-                <h4 data-i18n="block_input"></h4>
-                <span data-i18n="block_input_sub"></span>
+    <!-- INGENIERÍA (Diagramas Reales) -->
+    <section id="ingenieria" class="page">
+        <h2 class="section-title" data-i18n="eng_title"></h2>
+        
+        <!-- Diagrama Arquitectura -->
+        <div class="diagram-container">
+            <div class="node"><i data-lucide="layers"></i><span data-i18n="diag_sensors"></span></div>
+            <div class="connector"></div>
+            <div class="node primary"><i data-lucide="cpu"></i><span data-i18n="diag_logic"></span></div>
+            <div class="connector"></div>
+            <div class="node"><i data-lucide="droplets"></i><span data-i18n="diag_actuators"></span></div>
+        </div>
+
+        <div class="tech-specs grid-2">
+            <div class="card">
+                <h4 data-i18n="specs_title"></h4>
+                <ul class="specs-list">
+                    <li data-i18n="spec_1"></li>
+                    <li data-i18n="spec_2"></li>
+                    <li data-i18n="spec_3"></li>
+                </ul>
             </div>
-            <div class="diag-arrow"></div>
-            <div class="diag-node highlight">
-                <i data-lucide="cpu"></i>
-                <h4 data-i18n="block_logic"></h4>
-                <span data-i18n="block_logic_sub"></span>
-            </div>
-            <div class="diag-arrow"></div>
-            <div class="diag-node">
-                <i data-lucide="droplets"></i>
-                <h4 data-i18n="block_output"></h4>
-                <span data-i18n="block_output_sub"></span>
+            <div class="image-gallery">
+                <img src="img/instalacion-real.jpg" alt="SRIG Real" class="rounded-img">
+                <img src="img/arquitectura.png" alt="Arquitectura" class="rounded-img">
             </div>
         </div>
-        <div class="tech-images">
-            <img src="img/instalacion-real.jpg" class="img-preview">
-            <img src="img/arquitectura.png" class="img-preview">
+    </section>
+
+    <!-- GESTIÓN Y RIESGOS -->
+    <section id="gestion" class="page">
+        <h2 class="section-title" data-i18n="mgmt_title"></h2>
+        <div class="card table-container">
+            <h4 data-i18n="risks_title"></h4>
+            <table class="data-table">
+                <thead>
+                    <tr><th data-i18n="th_risk"></th><th data-i18n="th_impact"></th><th data-i18n="th_mitigation"></th></tr>
+                </thead>
+                <tbody>
+                    <tr><td data-i18n="r1_n"></td><td data-i18n="r1_i"></td><td data-i18n="r1_m"></td></tr>
+                    <tr><td data-i18n="r2_n"></td><td data-i18n="r2_i"></td><td data-i18n="r2_m"></td></tr>
+                    <tr><td data-i18n="r3_n"></td><td data-i18n="r3_i"></td><td data-i18n="r3_m"></td></tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
     <!-- CONTACTO -->
     <section id="contacto" class="page">
-        <h2 data-i18n="cont_title"></h2>
-        <table class="modern-table">
-            <thead>
-                <tr><th data-i18n="cont_resp"></th><th data-i18n="cont_role"></th><th>Email</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Ortega Rojas David Alonso</td><td>Ingeniero de Proyecto / Desarrollador SRIG</td><td>al24320557@utcj.edu.mx</td></tr>
-                <tr><td>Alvidrez Garduño Julio Cesar</td><td>Ingeniero de Manufactura</td><td>--</td></tr>
-                <tr><td>Bretado Barrera Carolina</td><td>Control de Procesos</td><td>--</td></tr>
-                <tr><td>Trujillo López Juana Araceli</td><td>Documentación y Calidad</td><td>--</td></tr>
-            </tbody>
-        </table>
+        <h2 class="section-title" data-i18n="cont_title"></h2>
+        <div class="card">
+            <table class="data-table">
+                <thead>
+                    <tr><th data-i18n="th_name"></th><th data-i18n="th_role"></th><th>Email</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Ortega Rojas David Alonso</td><td data-i18n="role_dev"></td><td>al24320557@utcj.edu.mx</td></tr>
+                    <tr><td>Alvidrez Garduño Julio Cesar</td><td data-i18n="role_mfg"></td><td>--</td></tr>
+                    <tr><td>Bretado Barrera Carolina</td><td data-i18n="role_proc"></td><td>--</td></tr>
+                    <tr><td>Trujillo López Juana Araceli</td><td data-i18n="role_doc"></td><td>--</td></tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 </main>
+
+<footer class="footer">
+    <p data-i18n="footer_text"></p>
+</footer>
 
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
