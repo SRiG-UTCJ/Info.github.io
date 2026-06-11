@@ -196,7 +196,7 @@ tflow_1: "The system reads soil moisture sensors to determine if hydration is ne
 tflow_2: "Information is verified against the real-time clock and operation mode (Auto/Manual).",
 tflow_3: "The controller activates relays that power the 24V solenoid valves.",
 tflow_4: "The flow sensor confirms water is actually flowing, detecting possible clogs or leaks.",
-tflow_5: "Once the optimal level or scheduled time is reached, the system closes the valves and generates a status report."
+tflow_5: "Once the optimal level or scheduled time is reached, the system closes the valves and generates a status report.",
         flow_1: "Initial condition monitoring (Sensors).",
         flow_2: "Logic evaluation based on active mode.",
         flow_3: "Authorization of solenoid valve opening.",
