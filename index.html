@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>SRIG · Sistema de Riego Inteligente por Goteo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="img/logo-srig.png">
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+
+  <meta name="theme-color" content="#1f6fae" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+
+<body>
+<header>
+  <div class="header-content">
+    <img src="img/logo-srig.png" alt="SRIG Logo" class="logo" />
+    <div>
+      <h1>SRIG</h1>
+      <p data-i18n="header_title">Sistema de Riego Inteligente por Goteo</p>
+    </div>
+<button id="langToggle" class="lang-btn">EN</button>
+    <button id="themeToggle">🌙</button>
+  </div>
+</header>
+
+<nav class="nav">
+  <a href="#inicio" data-i18n="nav_inicio">Inicio</a>
+  <a href="#funcionamiento" data-i18n="nav_funcionamiento">Sistema</a>
+  <a href="#arquitectura" data-i18n="nav_arquitectura">Arquitectura</a>
+  <a href="#alcance" data-i18n="nav_alcance">Alcance</a>
+  <a href="#legal" data-i18n="nav_legal">Aviso legal</a>
+  <a href="#contacto" data-i18n="nav_contacto">Contacto</a>
+</nav>
+
+<div class="breadcrumb" id="breadcrumb">
+  Inicio
+</div>
+
+<main>
+<section class="page" id="inicio">
+
+  <h2 data-i18n="title_intro">¿Qué es el SRIG?</h2>
+
+  <p data-i18n="intro_p1">
+
+      <strong>SRIG</strong> (Sistema de Riego Inteligente por Goteo) es un
+      <strong>proyecto académico</strong> desarrollado como parte de una
+      <strong>integradora del IPIW32</strong>, perteneciente a la carrera de
+  <strong>Procesos y Operaciones Industriales</strong>, implementado para controlar el riego
+      de una <strong>área específica dentro de la Universidad Tecnológica de Ciudad Juárez (UTCJ)</strong>.
+
+  </p>
+
+  <p data-i18n="intro_p2">
+      El sistema fue diseñado con fines <strong>educativos, demostrativos y de integración tecnológica</strong>.
+      No se trata de un producto comercial ni de un sistema de uso general.
+
+  </p>
+
+  <div class="highlight" data-i18n="intro_highlight">
+      Este proyecto fue desarrollado aplicando principios de control de procesos, operación de sistemas, seguridad
+  y mejora en el uso de recursos.
+    </div>
+
+  <h3 data-i18n="title_purpose">Propósito del proyecto</h3>
+
+  <p data-i18n="purpose_p1">
+  El SRIG tiene como propósito integrar los conocimientos adquiridos en la carrera
+  de <strong>Procesos y Operaciones Industriales</strong>, tales como:
+</p>
+
+<ul>
+    <li data-i18n="purpose_list_1">Control y monitoreo de procesos</li>
+    <li data-i18n="purpose_list_2">Automatización básica de operaciones</li>
+    <li data-i18n="purpose_list_3">Uso eficiente de recursos</li>
+    <li data-i18n="purpose_list_4">Gestión de condiciones seguras de operación</li>
+    <li data-i18n="purpose_list_5">Estandarización de la operación del riego</li>
+</ul>
+
+ <p data-i18n="purpose_p2">
+  El sistema se desarrolló como un ejercicio práctico de análisis,
+  diseño e implementación de un proceso automatizado en un entorno real.
+</p>
+
+<p class="small">
+  Este proyecto permite analizar un sistema real desde la perspectiva de
+  planeación, ejecución, control y mejora de procesos, alineado con los
+  objetivos formativos de la carrera de Procesos y Operaciones Industriales.
+</p>
+
+  </section>
+
+<!-- FUNCIONAMIENTO -->
+  <section class="page" id="funcionamiento">
+
+  <h2 data-i18n="title_operation">¿Qué hace el sistema?</h2>
+
+  <p data-i18n="operation_p1">
+  El SRIG opera como un <strong>proceso automatizado de riego</strong>,
+  en el cual se controlan entradas, condiciones de operación y salidas,
+  garantizando un funcionamiento estable y seguro.
+</p>
+
+    <div class="grid">
+      <div>
+        <h3 data-i18n="op_control">Control de riego</h3>
+      <p data-i18n="op_control_desc">Administra el riego por goteo de dos zonas independientes mediante electroválvulas.</p>
+      </div>
+
+      <div>
+        
+<h3 data-i18n="op_monitor">Monitoreo</h3>
+      <p data-i18n="op_monitor_desc">
+Mide humedad del suelo y confirma que el agua realmente esté fluyendo.</p>
+      </div>
+
+      <div>
+        <h3 data-i18n="op_auto">Automatización</h3>
+      <p data-i18n="op_auto_desc">
+Decide de forma autónoma cuándo iniciar y cuándo detener el riego.</p>
+      </div>
+
+      <div>
+        <h3 data-i18n="op_safety">Seguridad</h3>
+      <p data-i18n="op_safety_desc">Detiene el riego automáticamente ante fallas o condiciones inseguras.</p>
+      </div>
+    </div>
+
+<h3 data-i18n="title_flow">Flujo general de operación</h3>
+  <ol>
+    <li data-i18n="flow_1"></li>
+    <li data-i18n="flow_2"></li>
+    <li data-i18n="flow_3"></li>
+    <li data-i18n="flow_4"></li>
+    <li data-i18n="flow_5"></li>
+    <li data-i18n="flow_6"></li>
+  </ol>
+
+  
+
+<img src="img/flujo-operacion.png" class="diagram" alt="Flujo general del proceso SRIG">
+<h3 data-i18n="proc_vars_title"></h3>
+<ul>
+  <li data-i18n="proc_vars_in"></li>
+  <li data-i18n="proc_vars_ctrl"></li>
+  <li data-i18n="proc_vars_out"></li>
+</ul>
+<p class="small" data-i18n="safety_note">El sistema prioriza la <strong>seguridad del proceso</strong>, asegurando
+  que ninguna etapa de la operación continúe si se detectan condiciones
+  anómalas o fuera de los parámetros definidos.</p>
+
+  </section>
+
+
+<section class="page" id="arquitectura">
+  
+<h2 data-i18n="title_architecture">Arquitectura del sistema</h2>
+
+  <p data-i18n="arch_p1">
+    La arquitectura del SRIG fue diseñada para soportar un proceso de operación
+  confiable, repetible y seguro, permitiendo el control centralizado del riego
+  como una operación industrial a pequeña escala.
+  </p>
+
+  <img src="img/arquitectura.png"
+       alt="Diagrama de arquitectura SRIG"
+       class="diagram" />
+
+  
+    <div class="grid">
+      
+<div>
+      <h3 data-i18n="arch_ctrl">Control principal</h3>
+      <p data-i18n="arch_ctrl_desc"></p>
+    </div>
+
+    <div>
+      <h3 data-i18n="arch_act">Actuación</h3>
+      <p data-i18n="arch_act_desc"></p>
+    </div>
+
+    <div>
+      <h3 data-i18n="arch_sens">Sensores</h3>
+      <p data-i18n="arch_sens_desc"></p>
+    </div>
+
+       
+      <div>
+        <h3 data-i18n="arch_ui">Interfaz de usuario</h3>
+      <p data-i18n="arch_ui_desc"></p>
+        
+      </div>
+    </div>
+
+<div class="highlight small" data-i18n="arch_highlight">
+      La arquitectura está diseñada bajo el principio de
+      <strong>seguridad ante todo</strong>: ante cualquier falla o duda,
+      el sistema cierra las válvulas automáticamente.
+    </div>
+
+<img src="img/arquitectura-funcional.jpg" class="diagram" alt="Diagrama funcional SRIG">
+<img src="img/instalacion-real.jpg" class="diagram" alt="Instalación física del SRIG">
+
+<p class="small" data-i18n="arch_p2">
+  La arquitectura permite una operación estable del proceso, reduciendo la
+  intervención manual y asegurando la repetibilidad del riego bajo condiciones controladas.
+</p>
+
+</section>
+<!-- ALCANCE -->
+  <section class="page" id="alcance">
+
+  <h2 data-i18n="title_scope">Alcance del proyecto</h2>
+
+  <ul>
+    <li data-i18n="scope_1"></li>
+    <li data-i18n="scope_2"></li>
+    <li data-i18n="scope_3"></li>
+    <li data-i18n="scope_4"></li>
+    <li data-i18n="scope_5"></li>
+    <li data-i18n="scope_6"></li>
+    <li data-i18n="scope_7"></li>
+  </ul>
+
+  <h3 data-i18n="title_location">Ubicación del proyecto</h3>
+  <p data-i18n="location_p1"></p>
+
+
+<div class="map-container">
+    <iframe 
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d505.1521526924819!2d-106.41026751746729!3d31.599743775650847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e76700056ab2b7%3A0x99663e7c9588d805!2sJardin%20HJ!5e0!3m2!1ses!2smx!4v1776268131210!5m2!1ses!2smx" 
+width="600" 
+height="450" 
+style="border:0;" 
+allowfullscreen="" 
+loading="lazy" 
+referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+  </div>
+
+  <p data-i18n="location_p2"></p>
+<img src="img/jardin-hj.jpg" class="diagram" alt="Área de implementación Jardín HJ">
+  <p data-i18n="location_p3"></p>
+
+  
+  </section>
+
+  <!-- AVISO LEGAL -->
+  <section class="page" id="legal">
+    
+<h2 data-i18n="title_legal">Aviso legal</h2>
+
+  <p class="small" data-i18n="legal_1"></p>
+  <p class="small" data-i18n="legal_2"></p>
+  <p class="small" data-i18n="legal_3"></p>
+  <p class="small" data-i18n="legal_4"></p>
+  <p class="small" data-i18n="legal_5"></p>
+  <p class="small" data-i18n="legal_6"></p>
+
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="page" id="contacto">
+    <h2 data-i18n="title_contact">Contacto</h2>
+
+    <p data-i18n="contact_p">
+      Este proyecto se encuentra disponible para consulta académica
+      por parte de estudiantes de la UTCJ.
+    </p>
+
+
+<table class="info-table">
+  <thead>
+    <tr>
+
+<th data-i18n="table_col_project">Elemento del proyecto</th>
+<th data-i18n="table_col_resp">Responsable</th>
+<th data-i18n="table_col_func">Función</th>
+<th data-i18n="table_col_mail">Correo</th>
+
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+      <td>
+        Direccion ecologica UTCJ
+      </td>
+      <td>
+        Alvarado Bañuelos Guadalupe
+      </td>
+      <td>
+        Gestión de areas verdes
+      </td>
+<td>
+        guadalupe_alvarado@utcj.edu.mx
+      </td>
+</tr>
+<tr>
+      <td>
+        Proyecto integrador IPIW32
+      </td>
+      <td>
+        America Contreras
+      </td>
+      <td>
+        Diseño y ejecucion
+      </td>
+<td>
+        america_contreras@utcj.edu.mx
+      </td>
+</tr>
+    <tr>
+      <td>
+        Desarrollo de Proyecto integrador IPIW32
+      </td>
+      <td>
+        Eduardo Ortigoza
+      </td>
+      <td>
+        Desarrollo y seguimiento
+      </td>
+<td>
+        eduardo_ortigoza@utcj.edu.mx
+      </td>
+    </tr>
+<tr>
+      <td>
+        Proyecto integrador IPIW32-Forestacion
+      </td>
+      <td>
+        IPIW32-Araceli Trujillo
+      </td>
+      <td>
+        Documentacion
+      </td>
+<td>
+        --
+      </td>
+</tr>
+<tr>
+      <td>
+        Proyecto integrador IPIW32-Forestacion
+      </td>
+      <td>
+       Grupo IPIW32
+      </td>
+      <td>
+        Ejecucion y mantenimiento
+      </td>
+<td>
+        --
+      </td>
+</tr>
+<tr>
+      <td>
+        Desarrollo de <strong> SRIG – Sistema de Riego Inteligente por Goteo</strong>
+      </td>
+      <td>
+        IPIW32-David Ortega
+      </td>
+      <td>
+        Referencia técnica y educativa
+      </td>
+<td>
+        al24320557@utcj.edu.mx
+      </td>
+</tr>
+
+
+  </tbody>
+</table>
+
+  
+
+    <div data-i18n="contact_highlight" class="highlight small">
+      Para dudas académicas, mejoras o análisis del sistema,
+      se recomienda canalizarlo por los medios institucionales correspondientes.
+    </div>
+  </section>
+
+</main>
+
+<footer data-i18n="footer_text">
+  SRIG · Proyecto académico · UTCJ © 2026 · Uso educativo
+</footer>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
