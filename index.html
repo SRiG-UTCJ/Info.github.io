@@ -3,112 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRIG · Smart Irrigation</title>
-    <!-- Dependencias -->
+    <title data-i18n="page_title"></title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="light">
 
-<header class="header-slim">
+<header class="navbar">
     <div class="nav-container">
         <div class="brand">
-            <img src="img/logo-srig.png" class="logo-mini">
-            <span>SRIG</span>
+            <img src="img/logo-srig.png" alt="SRIG" class="logo">
+            <span class="brand-name">SRIG <small>UTCJ</small></span>
         </div>
-        <nav class="nav-links">
+        <nav class="nav-menu">
             <a href="#inicio" data-i18n="nav_inicio"></a>
-            <a href="#sistema" data-i18n="nav_funcionamiento"></a>
+            <a href="#business" data-i18n="nav_business"></a>
+            <a href="#sistema" data-i18n="nav_sistema"></a>
+            <a href="#manual" data-i18n="nav_manual"></a>
             <a href="#arquitectura" data-i18n="nav_arquitectura"></a>
             <a href="#contacto" data-i18n="nav_contacto"></a>
         </nav>
-        <div class="controls">
-            <button id="langToggle">EN</button>
-            <button id="themeToggle">🌙</button>
+        <div class="nav-actions">
+            <button id="langToggle" class="btn-toggle">EN</button>
+            <button id="themeToggle" class="btn-toggle">🌙</button>
         </div>
     </div>
 </header>
 
-<main class="main-content">
-    <!-- INICIO -->
+<main class="wrapper">
+    <!-- SECCIÓN INICIO -->
     <section id="inicio" class="page active">
-        <h2 class="gradient-text" data-i18n="title_intro"></h2>
-        <p class="lead" data-i18n="intro_p1"></p>
-        
-        <div class="justification-grid">
-            <div class="card chart-card">
-                <canvas id="savingsChart"></canvas>
-            </div>
-            <div class="card info-card">
-                <h3 data-i18n="title_purpose"></h3>
-                <ul>
-                    <li data-i18n="purpose_list_1"></li>
-                    <li data-i18n="purpose_list_2"></li>
-                    <li data-i18n="purpose_list_3"></li>
-                    <li data-i18n="purpose_list_4"></li>
-                </ul>
+        <div class="hero-card">
+            <h1 class="gradient-text" data-i18n="hero_title"></h1>
+            <p class="lead" data-i18n="hero_sub"></p>
+            <div class="hero-visual">
+                <img src="img/instalacion-real.jpg" class="hero-img">
             </div>
         </div>
     </section>
 
-    <!-- SISTEMA -->
-    <section id="sistema" class="page">
-        <h2 data-i18n="title_operation"></h2>
-        <div class="features">
-            <div class="card-sm"><h4 data-i18n="op_control"></h4><p data-i18n="op_control_desc"></p></div>
-            <div class="card-sm"><h4 data-i18n="op_safety"></h4><p data-i18n="op_safety_desc"></p></div>
+    <!-- BUSINESS CASE -->
+    <section id="business" class="page">
+        <h2 class="section-title" data-i18n="biz_title"></h2>
+        <p class="subtitle" data-i18n="biz_desc"></p>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <h3 data-i18n="biz_kpi_1_val"></h3>
+                <p data-i18n="biz_kpi_1"></p>
+            </div>
+            <div class="kpi-card">
+                <h3 data-i18n="biz_kpi_2_val"></h3>
+                <p data-i18n="biz_kpi_2"></p>
+            </div>
+            <div class="kpi-card">
+                <h3 data-i18n="biz_kpi_3_val"></h3>
+                <p data-i18n="biz_kpi_3"></p>
+            </div>
         </div>
-        <div class="diagram-section">
-            <h3 data-i18n="title_flow"></h3>
-            <img src="img/flujo-operacion.png" class="diag-fixed">
-            <div class="card variables">
-                <h4 data-i18n="proc_vars_title"></h4>
-                <p data-i18n="proc_vars_in"></p>
-                <p data-i18n="proc_vars_ctrl"></p>
+        <div class="chart-section card">
+            <canvas id="savingsChart"></canvas>
+        </div>
+    </section>
+
+    <!-- FUNCIONAMIENTO -->
+    <section id="sistema" class="page">
+        <h2 class="section-title" data-i18n="ops_title"></h2>
+        <div class="infographic">
+            <div class="info-step">
+                <div class="step-num">1</div>
+                <h4 data-i18n="ops_step_1"></h4>
+                <p data-i18n="ops_step_1_txt"></p>
+            </div>
+            <div class="info-divider"></div>
+            <div class="info-step">
+                <div class="step-num">2</div>
+                <h4 data-i18n="ops_step_2"></h4>
+                <p data-i18n="ops_step_2_txt"></p>
+            </div>
+            <div class="info-divider"></div>
+            <div class="info-step">
+                <div class="step-num">3</div>
+                <h4 data-i18n="ops_step_3"></h4>
+                <p data-i18n="ops_step_3_txt"></p>
+            </div>
+        </div>
+        <img src="img/flujo-operacion.png" class="diag-fixed">
+    </section>
+
+    <!-- MANUAL DE USO -->
+    <section id="manual" class="page">
+        <h2 class="section-title" data-i18n="manual_title"></h2>
+        <div class="grid-3">
+            <div class="card-glass">
+                <i data-lucide="zap"></i>
+                <h4 data-i18n="mode_auto"></h4>
+                <p data-i18n="mode_auto_txt"></p>
+            </div>
+            <div class="card-glass">
+                <i data-lucide="clock"></i>
+                <h4 data-i18n="mode_timer"></h4>
+                <p data-i18n="mode_timer_txt"></p>
+            </div>
+            <div class="card-glass">
+                <i data-lucide="hand"></i>
+                <h4 data-i18n="mode_manual"></h4>
+                <p data-i18n="mode_manual_txt"></p>
             </div>
         </div>
     </section>
 
     <!-- ARQUITECTURA -->
     <section id="arquitectura" class="page">
-        <h2 data-i18n="title_architecture"></h2>
-        <div class="arch-grid">
-            <img src="img/arquitectura.png" class="diag-fixed">
-            <div class="card">
-                <h4 data-i18n="arch_ctrl"></h4>
-                <p data-i18n="arch_ctrl_desc"></p>
-                <img src="img/instalacion-real.jpg" class="diag-fixed">
+        <h2 class="section-title">Ingeniería del Sistema</h2>
+        <div class="engineering-layout">
+            <div class="card-tech">
+                <img src="img/arquitectura.png" class="diag-fixed">
+                <div class="tech-spec">
+                    <h5>Core: ESP32 Dual Core</h5>
+                    <h5>Comm: WiFi + WebSockets</h5>
+                    <h5>Power: 24V DC / 110V AC isolated</h5>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="page">
-        <h2 data-i18n="title_contact"></h2>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th data-i18n="table_col_project"></th>
-                        <th data-i18n="table_col_resp"></th>
-                        <th data-i18n="table_col_mail"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Dirección Ecológica</td><td>Guadalupe Alvarado</td><td>guadalupe_alvarado@utcj.edu.mx</td></tr>
-                    <tr><td>Desarrollo SRIG</td><td>David Ortega</td><td>al24320557@utcj.edu.mx</td></tr>
-                </tbody>
-            </table>
         </div>
     </section>
 </main>
 
-<footer class="footer-slim">
+<footer class="main-footer">
     <p data-i18n="footer_text"></p>
 </footer>
 
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 </body>
+</html>
 </html>
