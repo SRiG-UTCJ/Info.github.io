@@ -114,7 +114,7 @@ tflow_5: "Una vez alcanzado el nivel óptimo o el tiempo programado, el sistema 
 
         // --- CONTACTO / IMPACTO ---
         impact_title: "Impacto y Equipo",
-        cont_title: "Equipo de Proyecto (IPIW32)",
+        cont_title: "Equipo de Proyecto (IPIW42)",
         th_name: "Integrante",
         th_role: "Responsabilidad",
         role_dev: "Desarrollo SRIG / Referencia Técnica",
@@ -140,7 +140,7 @@ tflow_5: "Una vez alcanzado el nivel óptimo o el tiempo programado, el sistema 
         footer_location: "Ciudad Juárez, Chihuahua, Mexico",
 
         // --- SECTION: HOME ---
-        hero_title: "Smart Drop Irrigation System",
+        hero_title: "Smart Drip Irrigation System",
         hero_sub: "Design and development of forestation for the HJ garden through the implementation of a Smart Drip Irrigation System (SRIG).",
         intro_title: "Introduction and Justification",
         intro_p1: "In Ciudad Juárez, due to its desert climate, efficient water use is essential. SRIG addresses the need to optimize water resources in urban environments where traditional methods cause waste. By supplying water directly to the root zone, we reduce evaporation losses and achieve efficiencies exceeding 90%.",
