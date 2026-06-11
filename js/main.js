@@ -103,3 +103,49 @@ function initChart() {
         options: { plugins: { title: { display: true, text: 'Consumo de Agua %' } } }
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    let lang = localStorage.getItem('lang') || 'es';
+    
+    // Función de Idioma
+    const applyLang = (l) => {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if(i18n[l][key]) el.innerHTML = i18n[l][key];
+        });
+        document.getElementById('langToggle').textContent = l === 'es' ? 'EN' : 'ES';
+        localStorage.setItem('lang', l);
+    };
+
+    // Navegación
+    const handleRoute = () => {
+        const id = location.hash.replace('#', '') || 'inicio';
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        const target = document.getElementById(id);
+        if(target) target.classList.add('active');
+    };
+
+    window.addEventListener('hashchange', handleRoute);
+    document.getElementById('langToggle').addEventListener('click', () => {
+        lang = lang === 'es' ? 'en' : 'es';
+        applyLang(lang);
+    });
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+    });
+
+    // Gráfica inicial
+    const ctx = document.getElementById('savingsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Desperdicio', 'Ahorro SRIG'],
+            datasets: [{ data: [60, 40], backgroundColor: ['#e2e8f0', '#1f6fae'] }]
+        },
+        options: { plugins: { title: { display: true, text: 'Eficiencia Hídrica' } } }
+    });
+
+    applyLang(lang);
+    handleRoute();
+});
