@@ -14,7 +14,7 @@ const i18n = {
         footer_location: "Ciudad Juárez, Chihuahua, México",
 
         // --- SECCIÓN: INICIO ---
-        hero_title: "RATIOMA Systemica",
+        hero_title: "Sistema de Riego inteligente por Goteo",
         hero_sub: "Diseño y desarrollo de la forestación del jardín HJ mediante la implementación de un sistema de riego inteligente por goteo (SRIG).",
         intro_title: "Introducción y Justificación",
         intro_p1: "En Ciudad Juárez, debido a su clima desértico, el uso eficiente del agua es fundamental. SRIG responde a la necesidad de optimizar el recurso hídrico en entornos urbanos donde los métodos tradicionales generan desperdicio y baja uniformidad. Al suministrar agua directamente a la zona radicular, reducimos pérdidas por evaporación y logramos eficiencias superiores al 90%.",
@@ -140,7 +140,7 @@ tflow_5: "Una vez alcanzado el nivel óptimo o el tiempo programado, el sistema 
         footer_location: "Ciudad Juárez, Chihuahua, Mexico",
 
         // --- SECTION: HOME ---
-        hero_title: "RATIOMA Systemica",
+        hero_title: "Smart Drop Irrigation System",
         hero_sub: "Design and development of forestation for the HJ garden through the implementation of a Smart Drip Irrigation System (SRIG).",
         intro_title: "Introduction and Justification",
         intro_p1: "In Ciudad Juárez, due to its desert climate, efficient water use is essential. SRIG addresses the need to optimize water resources in urban environments where traditional methods cause waste. By supplying water directly to the root zone, we reduce evaporation losses and achieve efficiencies exceeding 90%.",
