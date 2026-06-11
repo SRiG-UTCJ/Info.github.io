@@ -251,3 +251,45 @@ function initChart(lang) {
         }
     });
 }
+function renderPESTEL(data) {
+    const container = document.getElementById('pestelGrid');
+    if (!container) return;
+    
+    const items = [
+        { l: "P", t: data.pest_p_t, d: data.pest_p_d },
+        { l: "E", t: data.pest_e_t, d: data.pest_e_d },
+        { l: "S", t: data.pest_s_t, d: data.pest_s_d },
+        { l: "T", t: data.pest_t_t, d: data.pest_t_d },
+        { l: "E", t: data.pest_env_t, d: data.pest_env_d },
+        { l: "L", t: data.pest_l_t, d: data.pest_l_d }
+    ];
+
+    container.innerHTML = items.map(i => `
+        <div class="pestel-box">
+            <div class="pestel-letter">${i.l}</div>
+            <div class="pestel-info">
+                <h4>${i.t}</h4>
+                <p>${i.d}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderTeam(data) {
+    const body = document.getElementById('teamTableBody');
+    if (!body) return;
+
+    const team = [
+        { n: "Ortega Rojas David Alonso", r: data.role_1, e: "al24320557@utcj.edu.mx" },
+        { n: "Alvidrez Garduño Julio Cesar", r: data.role_2, e: "--" },
+        { n: "Bretado Barrera Carolina", r: data.role_3, e: "--" },
+        { n: "Trujillo López Juana Araceli", r: data.role_4, e: "--" }
+    ];
+
+    body.innerHTML = team.map(t => `
+        <tr>
+            <td><strong>${t.n}</strong><br><small>${t.e}</small></td>
+            <td><span class="role-badge">${t.r}</span></td>
+        </tr>
+    `).join('');
+}
