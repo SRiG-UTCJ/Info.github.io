@@ -107,18 +107,29 @@
         
         <!-- FODA Colapsable -->
         <div class="card collapsible active">
-            <div class="card-header">
-                <h3 data-i18n="foda_title"></h3>
-                <i data-lucide="chevron-down"></i>
+                    <h3 class="sub-header" data-i18n="foda_title"></h3>
+        <div class="swot-grid-v3">
+            <div class="swot-card f">
+                <div class="swot-icon"><i data-lucide="shield-check"></i></div>
+                <h4 data-i18n="foda_f"></h4>
+                <p data-i18n="foda_f_txt"></p>
             </div>
-            <div class="card-body">
-                <div class="swot-grid">
-                    <div class="swot-item s"><h4 data-i18n="foda_f"></h4><p data-i18n="foda_f_txt"></p></div>
-                    <div class="swot-item w"><h4 data-i18n="foda_d"></h4><p data-i18n="foda_d_txt"></p></div>
-                    <div class="swot-item o"><h4 data-i18n="foda_o"></h4><p data-i18n="foda_o_txt"></p></div>
-                    <div class="swot-item a"><h4 data-i18n="foda_a"></h4><p data-i18n="foda_a_txt"></p></div>
-                </div>
+            <div class="swot-card o">
+                <div class="swot-icon"><i data-lucide="trending-up"></i></div>
+                <h4 data-i18n="foda_o"></h4>
+                <p data-i18n="foda_o_txt"></p>
             </div>
+            <div class="swot-card d">
+                <div class="swot-icon"><i data-lucide="alert-circle"></i></div>
+                <h4 data-i18n="foda_d"></h4>
+                <p data-i18n="foda_d_txt"></p>
+            </div>
+            <div class="swot-card a">
+                <div class="swot-icon"><i data-lucide="zap-off"></i></div>
+                <h4 data-i18n="foda_a"></h4>
+                <p data-i18n="foda_a_txt"></p>
+            </div>
+        </div>
         </div>
 
         <div class="card">
@@ -148,9 +159,15 @@
         <div class="card">
             <h3 data-i18n="specs_title"></h3>
             <div id="specsTable" class="table-responsive"></div>
-            <div class="image-gallery-compact">
-                <img src="img/instalacion-real.jpg" class="rounded-img" alt="HJ Garden">
-                <img src="img/arquitectura.png" class="rounded-img" alt="Architecture">
+            <div class="tech-gallery-v3">
+                <div class="img-item">
+                    <img src="img/instalacion-real.jpg" alt="Instalación">
+                    <small data-i18n="img_cap_1"></small>
+                </div>
+                <div class="img-item">
+                    <img src="img/arquitectura.png" alt="Hardware">
+                    <small data-i18n="img_cap_2"></small>
+                </div>
             </div>
         </div>
     </section>
@@ -158,7 +175,19 @@
     <!-- PESTAÑA: PROCESO -->
     <section id="proceso" class="page">
         <h2 class="section-header" data-i18n="proc_title"></h2>
-        <div class="flow-chart-container" id="flowSteps"></div>
+       <div class="process-explainer-v3">
+            <div class="proc-text">
+                <p data-i18n="proc_p1"></p>
+                <div class="proc-steps-list">
+                    <div class="p-step"><strong>1. Sensado:</strong> <span data-i18n="flow_1"></span></div>
+                    <div class="p-step"><strong>2. Lógica:</strong> <span data-i18n="flow_2"></span></div>
+                    <div class="p-step"><strong>3. Acción:</strong> <span data-i18n="flow_3"></span></div>
+                    <div class="p-step"><strong>4. Feedback:</strong> <span data-i18n="flow_4"></span></div>
+                    <div class="p-step"><strong>5. Control:</strong> <span data-i18n="flow_5"></span></div>
+                </div>
+            </div>
+            <div class="flow-chart-container" id="flowSteps"></div>
+        </div>
         <div class="card warning-alert">
             <i data-lucide="alert-triangle"></i>
             <p data-i18n="proc_safety_note"></p>
