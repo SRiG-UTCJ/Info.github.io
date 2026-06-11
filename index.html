@@ -5,21 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page_title">SRIG · RATIOMA Systemica</title>
     
-    <!-- Librerías de Visualización y Gráficos -->
+    <!-- Librerías de Terceros -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Estilos Personalizados -->
+    <!-- Enlace a estilos -->
     <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- PWA Metadata (Opcional) -->
-    <meta name="theme-color" content="#1f6fae">
 </head>
 <body class="light-theme">
 
 <header class="navbar">
     <div class="nav-container">
-        <!-- Logotipo y Nombre -->
+        <!-- Logo y Marca -->
         <div class="brand">
             <img src="img/logo-srig.png" class="logo-img" alt="SRIG Logo">
             <div class="brand-info">
@@ -28,23 +25,23 @@
             </div>
         </div>
 
-        <!-- Botón Menú Hamburguesa (Solo visible en móviles) -->
-        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <!-- Menú Hamburguesa para Móvil -->
+        <button class="hamburger" id="hamburger" aria-label="Menu">
             <i data-lucide="menu"></i>
         </button>
 
-        <!-- Navegación Principal -->
+        <!-- Navegación por Pestañas (SPA) -->
         <nav class="main-nav" id="mainNav">
-            <a href="#inicio" data-i18n="nav_inicio"></a>
+            <a href="#inicio" data-i18n="nav_inicio" class="active"></a>
+            <a href="#negocio" data-i18n="nav_negocio"></a>
             <a href="#estrategia" data-i18n="nav_estrategia"></a>
             <a href="#ingenieria" data-i18n="nav_arquitectura"></a>
             <a href="#proceso" data-i18n="nav_proceso"></a>
             <a href="#gestion" data-i18n="nav_gestion"></a>
             <a href="#legal" data-i18n="nav_legal"></a>
-            <a href="#contacto" data-i18n="nav_contacto"></a>
         </nav>
 
-        <!-- Controles de Interfaz -->
+        <!-- Botones de Control -->
         <div class="header-actions">
             <button id="langToggle" class="btn-util">EN</button>
             <button id="themeToggle" class="btn-util">🌙</button>
@@ -52,9 +49,10 @@
     </div>
 </header>
 
+<!-- Contenido Principal Dinámico -->
 <main class="main-content">
 
-    <!-- SECCIÓN 1: INICIO -->
+    <!-- PESTAÑA: INICIO -->
     <section id="inicio" class="page active">
         <div class="hero">
             <h1 class="gradient-text" data-i18n="hero_title"></h1>
@@ -66,39 +64,47 @@
             </div>
         </div>
         
-        <!-- Tarjeta Colapsable: Introducción -->
-        <div class="card collapsible active">
-            <div class="card-header">
-                <h3 data-i18n="intro_title"></h3>
-                <i data-lucide="chevron-down"></i>
-            </div>
-            <div class="card-body">
-                <p data-i18n="intro_p1"></p>
-                <div class="savings-kpi">
-                    <div class="kpi-box"><h4 data-i18n="kpi_water_val"></h4><span data-i18n="kpi_water_txt"></span></div>
-                    <div class="kpi-box"><h4 data-i18n="kpi_eff_val"></h4><span data-i18n="kpi_eff_txt"></span></div>
-                </div>
-            </div>
+        <div class="card shadow-sm">
+            <h3 class="card-title" data-i18n="intro_title"></h3>
+            <p data-i18n="intro_p1"></p>
         </div>
 
-        <!-- Tarjeta Colapsable: Objetivos -->
         <div class="card collapsible">
             <div class="card-header">
                 <h3 data-i18n="obj_title"></h3>
                 <i data-lucide="chevron-down"></i>
             </div>
             <div class="card-body">
-                <ul class="check-list" id="objectiveList">
-                    <!-- Contenido dinámico desde main.js -->
-                </ul>
+                <ul class="check-list" id="objectiveList"></ul>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN 2: ESTRATEGIA (FODA & PESTEL) -->
+    <!-- PESTAÑA: MODELO DE NEGOCIO -->
+    <section id="negocio" class="page">
+        <h2 class="section-header" data-i18n="nav_negocio"></h2>
+        <div class="grid-layout">
+            <div class="card info-card">
+                <h3 data-i18n="biz_comp_name"></h3>
+                <p data-i18n="biz_mission"></p>
+                <div class="savings-kpi">
+                    <div class="kpi-box">
+                        <h4 data-i18n="kpi_water_val"></h4>
+                        <span data-i18n="kpi_water_txt"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card chart-card">
+                <canvas id="impactChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- PESTAÑA: ESTRATEGIA -->
     <section id="estrategia" class="page">
         <h2 class="section-header" data-i18n="str_title"></h2>
         
+        <!-- FODA Colapsable -->
         <div class="card collapsible active">
             <div class="card-header">
                 <h3 data-i18n="foda_title"></h3>
@@ -114,25 +120,18 @@
             </div>
         </div>
 
-        <div class="card collapsible">
-            <div class="card-header">
-                <h3 data-i18n="pestel_title"></h3>
-                <i data-lucide="chevron-down"></i>
-            </div>
-            <div class="card-body">
-                <div class="pestel-container" id="pestelGrid">
-                    <!-- Llenado dinámico P-E-S-T-E-L -->
-                </div>
-            </div>
+        <div class="card">
+            <h3 class="card-title" data-i18n="pestel_title"></h3>
+            <div class="pestel-container" id="pestelGrid"></div>
         </div>
     </section>
 
-    <!-- SECCIÓN 3: INGENIERÍA -->
+    <!-- PESTAÑA: INGENIERÍA -->
     <section id="ingenieria" class="page">
         <h2 class="section-header" data-i18n="eng_title"></h2>
         
-        <!-- Diagrama de Arquitectura HTML Real -->
-        <div class="card arch-diagram-container">
+        <!-- Diagrama de Arquitectura (CSS) -->
+        <div class="card diag-card">
             <h3 class="sub-header" data-i18n="diag_arch_title"></h3>
             <div class="logic-diag">
                 <div class="diag-node glass"><i data-lucide="monitor"></i><span data-i18n="diag_node_ui"></span></div>
@@ -145,43 +144,35 @@
             </div>
         </div>
 
-        <div class="card collapsible">
-            <div class="card-header">
-                <h3 data-i18n="specs_title"></h3>
-                <i data-lucide="chevron-down"></i>
-            </div>
-            <div class="card-body">
-                <table class="specs-table" id="specsTable"></table>
-                <div class="image-showcase">
-                    <img src="img/instalacion-real.jpg" alt="Jardín HJ" class="rounded-img">
-                    <img src="img/arquitectura.png" alt="Arquitectura" class="rounded-img">
-                </div>
+        <div class="card">
+            <h3 data-i18n="specs_title"></h3>
+            <div id="specsTable" class="table-responsive"></div>
+            <div class="image-gallery-compact">
+                <img src="img/instalacion-real.jpg" class="rounded-img" alt="HJ Garden">
+                <img src="img/arquitectura.png" class="rounded-img" alt="Architecture">
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN 4: PROCESO -->
+    <!-- PESTAÑA: PROCESO -->
     <section id="proceso" class="page">
         <h2 class="section-header" data-i18n="proc_title"></h2>
         <div class="flow-chart-container" id="flowSteps"></div>
-        <div class="card warning-card">
+        <div class="card warning-alert">
             <i data-lucide="alert-triangle"></i>
             <p data-i18n="proc_safety_note"></p>
         </div>
     </section>
 
-    <!-- SECCIÓN 5: GESTIÓN (EDT/WBS) -->
+    <!-- PESTAÑA: GESTIÓN -->
     <section id="gestion" class="page">
         <h2 class="section-header" data-i18n="mgmt_title"></h2>
-        <div class="card collapsible active">
-            <div class="card-header">
-                <h3 data-i18n="edt_title"></h3>
-                <i data-lucide="chevron-down"></i>
-            </div>
-            <div class="card-body">
-                <div class="edt-timeline" id="edtTimeline"></div>
-            </div>
+        <div class="card">
+            <h3 data-i18n="edt_title"></h3>
+            <div class="edt-timeline" id="edtTimeline"></div>
         </div>
+        
+        <!-- Riesgos Colapsable -->
         <div class="card collapsible">
             <div class="card-header">
                 <h3 data-i18n="risk_title"></h3>
@@ -191,7 +182,11 @@
                 <div class="table-responsive">
                     <table class="tech-table">
                         <thead>
-                            <tr><th data-i18n="th_risk"></th><th data-i18n="th_impact"></th><th data-i18n="th_mitigation"></th></tr>
+                            <tr>
+                                <th data-i18n="th_risk"></th>
+                                <th data-i18n="th_impact"></th>
+                                <th data-i18n="th_mitigation"></th>
+                            </tr>
                         </thead>
                         <tbody id="riskTableBody"></tbody>
                     </table>
@@ -200,10 +195,10 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 6: AVISO LEGAL -->
+    <!-- PESTAÑA: AVISO LEGAL -->
     <section id="legal" class="page">
         <h2 class="section-header" data-i18n="nav_legal"></h2>
-        <div class="card">
+        <div class="card legal-card">
             <h3 data-i18n="legal_title"></h3>
             <p data-i18n="legal_p"></p>
             <br>
@@ -211,35 +206,14 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 7: IMPACTO Y CONTACTO -->
-    <section id="contacto" class="page">
-        <h2 class="section-header" data-i18n="impact_title"></h2>
-        <div class="grid-layout">
-            <div class="card chart-container">
-                <canvas id="impactChart"></canvas>
-            </div>
-            <div class="card">
-                <h3 data-i18n="cont_title"></h3>
-                <div class="table-responsive">
-                    <table class="tech-table mini">
-                        <thead>
-                            <tr><th data-i18n="th_name"></th><th data-i18n="th_role"></th></tr>
-                        </thead>
-                        <tbody id="teamTableBody"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
 </main>
 
+<!-- Footer Corporativo: Logo a la izquierda -->
 <footer class="main-footer">
     <div class="footer-container">
-        <!-- Logo a la izquierda -->
-        <div class="footer-left">
+        <div class="footer-brand-group">
             <img src="img/logo-srig.png" alt="UTCJ Logo" class="footer-logo">
-            <div class="footer-text-group">
+            <div class="footer-text">
                 <p data-i18n="footer_text"></p>
                 <small data-i18n="footer_location"></small>
             </div>
@@ -247,7 +221,7 @@
     </div>
 </footer>
 
-<!-- Archivos de Lógica -->
+<!-- Scripts de control -->
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 </body>
