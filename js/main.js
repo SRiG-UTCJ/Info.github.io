@@ -1,6 +1,6 @@
 /**
  * SRIG - Main Logic Control
- * Gestión de navegación SPA, Menú Móvil, Cards Colapsables y Traducción.
+ * Gestión de: Navegación por pestañas, Menú Hamburguesa, Cards Colapsables e Idiomas.
  */
 
 let impactChart = null; // Instancia global de la gráfica
@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Inicializar Iconos Lucide
     lucide.createIcons();
 
-    // 2. Determinar estado inicial
+    // 2. Determinar idioma inicial
     let currentLang = localStorage.getItem('lang') || 'es';
 
-    // 3. Control del Menú Hamburguesa
+    // 3. NUEVO: Control del Menú Hamburguesa
     const hamburger = document.getElementById('hamburger');
     const mainNav = document.getElementById('mainNav');
 
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mainNav.classList.toggle('mobile-active');
         });
 
-        // Cerrar menú al hacer clic en cualquier enlace (para móviles)
+        // Cerrar menú automáticamente al hacer clic en un enlace (móvil)
         mainNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mainNav.classList.remove('mobile-active');
@@ -29,102 +29,97 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Control de Cards Colapsables
+    // 4. NUEVO: Control de Cards Colapsables
+    // Busca todas las tarjetas con la clase 'collapsible'
     document.querySelectorAll('.card.collapsible .card-header').forEach(header => {
         header.addEventListener('click', () => {
             const card = header.parentElement;
             card.classList.toggle('active');
-            // Re-inicializar iconos por si cambian
+            // Re-escanea iconos por si el cambio de estado lo requiere
             lucide.createIcons();
         });
     });
 
-    // 5. Configuración de Ruteo (SPA)
-    window.addEventListener('hashchange', handleRoute);
-    handleRoute();
+    // 5. NAVEGACIÓN POR PESTAÑAS (SPA)
+    // Detecta cambios en la URL (ej. #ingenieria) y muestra la sección correspondiente
+    const handleRoute = () => {
+        const hash = location.hash.replace('#', '') || 'inicio';
+        
+        // Ocultar todas las páginas
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(p => p.classList.remove('active'));
+        
+        // Mostrar la página destino
+        const target = document.getElementById(hash);
+        if (target) target.classList.add('active');
 
-    // 6. Toggles de Idioma y Tema
-    const langBtn = document.getElementById('langToggle');
-    if (langBtn) {
-        langBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'es' ? 'en' : 'es';
-            applyLanguage(currentLang);
+        // Actualizar clase 'active' en el menú de navegación
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${hash}`);
         });
-    }
 
-    const themeBtn = document.getElementById('themeToggle');
-    if (themeBtn) {
-        // Cargar tema guardado
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-theme');
-            document.body.classList.remove('light-theme');
-            themeBtn.textContent = '☀️';
+        // Si entramos a la pestaña de negocio, refrescamos la gráfica
+        if (hash === 'negocio' || hash === 'contacto') {
+            initChart(currentLang);
         }
 
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-            document.body.classList.toggle('light-theme');
-            const isDark = document.body.classList.contains('dark-theme');
-            themeBtn.textContent = isDark ? '☀️' : '🌙';
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            // Refrescar gráfica para colores
-            initChart(currentLang);
+        window.scrollTo(0, 0);
+    };
+
+    window.addEventListener('hashchange', handleRoute);
+    handleRoute(); // Ejecución inicial
+
+    // 6. CONTROL DE IDIOMAS
+    const applyLanguage = (lang) => {
+        localStorage.setItem('lang', lang);
+        const data = i18n[lang];
+
+        // Traducir todos los elementos con data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (data[key]) el.innerHTML = data[key];
         });
+
+        // Actualizar texto del botón de idioma
+        document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
+
+        // Renderizar componentes técnicos dinámicos
+        renderObjectives(data);
+        renderPESTEL(data);
+        renderFlow(data);
+        renderEDT(data);
+        renderRisks(data);
+        renderTeam(data);
+        renderSpecs(data);
+        initChart(lang);
+    };
+
+    document.getElementById('langToggle').addEventListener('click', () => {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        applyLanguage(currentLang);
+    });
+
+    // 7. MODO OSCURO
+    const themeBtn = document.getElementById('themeToggle');
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('light-theme');
+        themeBtn.textContent = '☀️';
     }
 
-    // 7. Renderizado Inicial
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        document.body.classList.toggle('light-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        themeBtn.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        initChart(currentLang);
+    });
+
     applyLanguage(currentLang);
 });
 
-/**
- * Navegación entre secciones sin recargar página
- */
-function handleRoute() {
-    const hash = location.hash.replace('#', '') || 'inicio';
-    
-    // Cambiar visibilidad de secciones
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(p => p.classList.remove('active'));
-    
-    const target = document.getElementById(hash);
-    if (target) target.classList.add('active');
-
-    // Actualizar estado del menú de navegación
-    const navLinks = document.querySelectorAll('.main-nav a');
-    navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${hash}`);
-    });
-
-    window.scrollTo(0, 0);
-}
-
-/**
- * Traduce el contenido y regenera componentes dinámicos
- */
-function applyLanguage(lang) {
-    localStorage.setItem('lang', lang);
-    const data = i18n[lang];
-
-    // Traducción de textos con data-i18n
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (data[key]) el.innerHTML = data[key];
-    });
-
-    // Actualizar texto del botón de idioma
-    document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
-
-    // Ejecutar renderizado de componentes técnicos
-    renderObjectives(data);
-    renderPESTEL(data);
-    renderFlow(data);
-    renderEDT(data);
-    renderRisks(data);
-    renderTeam(data);
-    initChart(lang);
-}
-
-// --- FUNCIONES DE RENDERIZADO TÉCNICO ---
+// --- FUNCIONES DE RENDERIZADO TÉCNICO (Contenido del PDF) ---
 
 function renderObjectives(data) {
     const list = document.getElementById('objectiveList');
@@ -161,7 +156,7 @@ function renderFlow(data) {
             <div class="step-circle">${i + 1}</div>
             <div class="step-text">${s}</div>
         </div>
-        ${i < 4 ? '<div class="flow-connector"></div>' : ''}
+        ${i < steps.length - 1 ? '<div class="flow-connector"></div>' : ''}
     `).join('');
 }
 
@@ -186,9 +181,22 @@ function renderRisks(data) {
         <tr>
             <td><strong>${r.n}</strong></td>
             <td>${r.i}</td>
-            <td style="color: var(--primary); font-weight: 600;">${r.m}</td>
+            <td style="color: var(--primary); font-weight: 700;">${r.m}</td>
         </tr>
     `).join('');
+}
+
+function renderSpecs(data) {
+    const table = document.getElementById('specsTable');
+    if (!table) return;
+    const specs = [
+        { k: data.spec_volt, v: data.spec_volt_val },
+        { k: data.spec_type, v: data.spec_type_val },
+        { k: data.spec_config, v: data.spec_config_val }
+    ];
+    table.innerHTML = `<table class="tech-table">` + 
+        specs.filter(s => s.k).map(s => `<tr><td><strong>${s.k}</strong></td><td>${s.v}</td></tr>`).join('') + 
+        `</table>`;
 }
 
 function renderTeam(data) {
