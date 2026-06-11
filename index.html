@@ -3,150 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">SRIG · Sistema de Riego Inteligente</title>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>SRIG · Smart Irrigation</title>
+    <!-- Dependencias -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<header class="slim-header">
+<header class="header-slim">
     <div class="nav-container">
         <div class="brand">
-            <img src="img/logo-srig.png" alt="Logo" class="mini-logo">
-            <span class="brand-name">SRIG</span>
+            <img src="img/logo-srig.png" class="logo-mini">
+            <span>SRIG</span>
         </div>
-        <nav class="main-nav">
+        <nav class="nav-links">
             <a href="#inicio" data-i18n="nav_inicio"></a>
             <a href="#sistema" data-i18n="nav_funcionamiento"></a>
             <a href="#arquitectura" data-i18n="nav_arquitectura"></a>
-            <a href="#alcance" data-i18n="nav_alcance"></a>
-            <a href="#legal" data-i18n="nav_legal"></a>
             <a href="#contacto" data-i18n="nav_contacto"></a>
         </nav>
-        <div class="nav-controls">
-            <button id="langToggle" class="btn-sm">EN</button>
-            <button id="themeToggle" class="btn-sm">🌙</button>
+        <div class="controls">
+            <button id="langToggle">EN</button>
+            <button id="themeToggle">🌙</button>
         </div>
     </div>
 </header>
 
-<div class="breadcrumb" id="breadcrumb">Inicio</div>
-
-<main class="content-wrapper">
-    <!-- SECCIÓN INICIO -->
-    <section class="page active" id="inicio">
-        <div class="hero-mini" data-aos="fade-down">
-            <h1 class="gradient-text" data-i18n="title_intro"></h1>
-            <p data-i18n="intro_p1"></p>
-        </div>
-
-        <div class="justification-box" data-aos="fade-up">
-            <h3 data-i18n="title_purpose"></h3>
-            <div class="grid-justification">
-                <div class="chart-box">
-                    <canvas id="efficiencyChart"></canvas>
-                </div>
-                <div class="text-list">
-                    <ul>
-                        <li data-i18n="purpose_list_1"></li>
-                        <li data-i18n="purpose_list_2"></li>
-                        <li data-i18n="purpose_list_3"></li>
-                        <li data-i18n="purpose_list_4"></li>
-                        <li data-i18n="purpose_list_5"></li>
-                    </ul>
-                </div>
+<main class="main-content">
+    <!-- INICIO -->
+    <section id="inicio" class="page active">
+        <h2 class="gradient-text" data-i18n="title_intro"></h2>
+        <p class="lead" data-i18n="intro_p1"></p>
+        
+        <div class="justification-grid">
+            <div class="card chart-card">
+                <canvas id="savingsChart"></canvas>
             </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN SISTEMA -->
-    <section class="page" id="sistema">
-        <h2 class="section-title" data-i18n="title_operation"></h2>
-        <div class="features-grid">
-            <div class="card"><h4 data-i18n="op_control"></h4><p data-i18n="op_control_desc"></p></div>
-            <div class="card"><h4 data-i18n="op_monitor"></h4><p data-i18n="op_monitor_desc"></p></div>
-            <div class="card"><h4 data-i18n="op_auto"></h4><p data-i18n="op_auto_desc"></p></div>
-            <div class="card"><h4 data-i18n="op_safety"></h4><p data-i18n="op_safety_desc"></p></div>
-        </div>
-
-        <div class="diagram-area">
-            <h3 data-i18n="title_flow"></h3>
-            <img src="img/flujo-operacion.png" class="diag-img-md">
-            <div class="variables-box">
-                <h4 data-i18n="proc_vars_title"></h4>
+            <div class="card info-card">
+                <h3 data-i18n="title_purpose"></h3>
                 <ul>
-                    <li data-i18n="proc_vars_in"></li>
-                    <li data-i18n="proc_vars_ctrl"></li>
-                    <li data-i18n="proc_vars_out"></li>
+                    <li data-i18n="purpose_list_1"></li>
+                    <li data-i18n="purpose_list_2"></li>
+                    <li data-i18n="purpose_list_3"></li>
+                    <li data-i18n="purpose_list_4"></li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN ARQUITECTURA -->
-    <section class="page" id="arquitectura">
-        <h2 class="section-title" data-i18n="title_architecture"></h2>
-        <div class="grid-layout">
-            <div class="diag-container">
-                <img src="img/arquitectura.png" class="diag-img-md">
-                <img src="img/instalacion-real.jpg" class="diag-img-md">
-            </div>
-            <div class="info-side">
-                <div class="card"><h4 data-i18n="arch_ctrl"></h4><p data-i18n="arch_ctrl_desc"></p></div>
-                <div class="card"><h4 data-i18n="arch_act"></h4><p data-i18n="arch_act_desc"></p></div>
+    <!-- SISTEMA -->
+    <section id="sistema" class="page">
+        <h2 data-i18n="title_operation"></h2>
+        <div class="features">
+            <div class="card-sm"><h4 data-i18n="op_control"></h4><p data-i18n="op_control_desc"></p></div>
+            <div class="card-sm"><h4 data-i18n="op_safety"></h4><p data-i18n="op_safety_desc"></p></div>
+        </div>
+        <div class="diagram-section">
+            <h3 data-i18n="title_flow"></h3>
+            <img src="img/flujo-operacion.png" class="diag-fixed">
+            <div class="card variables">
+                <h4 data-i18n="proc_vars_title"></h4>
+                <p data-i18n="proc_vars_in"></p>
+                <p data-i18n="proc_vars_ctrl"></p>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN ALCANCE / UBICACIÓN -->
-    <section class="page" id="alcance">
-        <h2 data-i18n="title_scope"></h2>
-        <ul class="scope-list">
-            <li data-i18n="scope_1"></li><li data-i18n="scope_2"></li><li data-i18n="scope_3"></li>
-        </ul>
-        <h3 data-i18n="title_location"></h3>
-        <div class="map-grid">
-            <div class="map-frame">
-                <iframe src="https://www.google.com/maps/embed?..." loading="lazy"></iframe>
+    <!-- ARQUITECTURA -->
+    <section id="arquitectura" class="page">
+        <h2 data-i18n="title_architecture"></h2>
+        <div class="arch-grid">
+            <img src="img/arquitectura.png" class="diag-fixed">
+            <div class="card">
+                <h4 data-i18n="arch_ctrl"></h4>
+                <p data-i18n="arch_ctrl_desc"></p>
+                <img src="img/instalacion-real.jpg" class="diag-fixed">
             </div>
-            <img src="img/jardin-hj.jpg" class="diag-img-md">
         </div>
     </section>
 
-    <!-- SECCIÓN LEGAL -->
-    <section class="page" id="legal">
-        <h2 data-i18n="title_legal"></h2>
-        <div class="legal-text">
-            <p data-i18n="legal_1"></p><p data-i18n="legal_2"></p><p data-i18n="legal_3"></p>
-        </div>
-    </section>
-
-    <!-- SECCIÓN CONTACTO -->
-    <section class="page" id="contacto">
+    <!-- CONTACTO -->
+    <section id="contacto" class="page">
         <h2 data-i18n="title_contact"></h2>
-        <div class="table-responsive">
-            <table class="info-table" id="contactTable">
+        <div class="table-container">
+            <table>
                 <thead>
                     <tr>
                         <th data-i18n="table_col_project"></th>
                         <th data-i18n="table_col_resp"></th>
-                        <th data-i18n="table_col_func"></th>
                         <th data-i18n="table_col_mail"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Filas originales del contacto -->
-                    <tr><td>Integrador IPIW32</td><td>America Contreras</td><td>Diseño</td><td>...</td></tr>
-                    <tr><td>Desarrollo SRIG</td><td>David Ortega</td><td>Referencia Técnica</td><td>...</td></tr>
+                    <tr><td>Dirección Ecológica</td><td>Guadalupe Alvarado</td><td>guadalupe_alvarado@utcj.edu.mx</td></tr>
+                    <tr><td>Desarrollo SRIG</td><td>David Ortega</td><td>al24320557@utcj.edu.mx</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 </main>
 
-<footer class="slim-footer">
+<footer class="footer-slim">
     <p data-i18n="footer_text"></p>
 </footer>
 
