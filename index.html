@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page_title">SRIG · RATIOMA Systemica</title>
-    <!-- Librerías -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/styles.css">
@@ -14,126 +13,123 @@
 <header class="navbar">
     <div class="nav-container">
         <div class="brand">
-            <img src="img/logo-srig.png" class="logo" alt="SRIG">
+            <img src="img/logo-srig.png" class="logo" alt="Logo">
             <div class="brand-text">
                 <span class="company">RATIOMA Systemica</span>
-                <span class="project">SRIG · UTCJ</span>
+                <span class="project">SRIG · v2.0</span>
             </div>
         </div>
-        <nav class="nav-menu">
+        <nav class="nav-links">
             <a href="#inicio" data-i18n="nav_inicio"></a>
-            <a href="#business" data-i18n="nav_business"></a>
+            <a href="#estrategia" data-i18n="nav_estrategia"></a>
             <a href="#ingenieria" data-i18n="nav_arquitectura"></a>
             <a href="#gestion" data-i18n="nav_gestion"></a>
+            <a href="#mercado" data-i18n="nav_mercado"></a>
             <a href="#contacto" data-i18n="nav_contacto"></a>
         </nav>
-        <div class="nav-actions">
-            <button id="langToggle" class="btn-tool">EN</button>
-            <button id="themeToggle" class="btn-tool">🌙</button>
+        <div class="actions">
+            <button id="langToggle" class="btn-sm">EN</button>
+            <button id="themeToggle" class="btn-sm">🌙</button>
         </div>
     </div>
 </header>
 
-<main class="wrapper">
-    <!-- INICIO -->
+<main class="content">
+    <!-- SECCIÓN INICIO -->
     <section id="inicio" class="page active">
         <div class="hero">
             <h1 class="gradient-text" data-i18n="hero_title"></h1>
             <p class="lead" data-i18n="hero_sub"></p>
-            <div class="method-badges">
-                <span>PMBOK</span><span>LEAN MANUFACTURING</span><span>APQP</span>
+            <div class="badges">
+                <span>PMBOK</span><span>APQP</span><span>LEAN MFG</span>
             </div>
         </div>
-        <div class="card intro-card">
-            <h3 data-i18n="obj_title"></h3>
-            <p data-i18n="obj_desc"></p>
-        </div>
-    </section>
-
-    <!-- BUSINESS & FODA -->
-    <section id="business" class="page">
-        <h2 class="section-title" data-i18n="biz_title"></h2>
         <div class="grid-2">
-            <div class="card chart-box">
-                <canvas id="savingsChart"></canvas>
-            </div>
-            <div class="card biz-info">
-                <h4 data-i18n="biz_comp_name"></h4>
-                <p data-i18n="biz_mission"></p>
-                <div class="savings-badge" data-i18n="savings_stat"></div>
-            </div>
-        </div>
-
-        <h3 class="section-title" data-i18n="foda_title"></h3>
-        <div class="swot-grid">
-            <div class="swot-card s"><h5 data-i18n="foda_f"></h5><p data-i18n="foda_f_txt"></p></div>
-            <div class="swot-card w"><h5 data-i18n="foda_d"></h5><p data-i18n="foda_d_txt"></p></div>
-            <div class="swot-card o"><h5 data-i18n="foda_o"></h5><p data-i18n="foda_o_txt"></p></div>
-            <div class="swot-card t"><h5 data-i18n="foda_a"></h5><p data-i18n="foda_a_txt"></p></div>
-        </div>
-    </section>
-
-    <!-- INGENIERÍA (Diagramas Reales) -->
-    <section id="ingenieria" class="page">
-        <h2 class="section-title" data-i18n="eng_title"></h2>
-        
-        <!-- Diagrama Arquitectura -->
-        <div class="diagram-container">
-            <div class="node"><i data-lucide="layers"></i><span data-i18n="diag_sensors"></span></div>
-            <div class="connector"></div>
-            <div class="node primary"><i data-lucide="cpu"></i><span data-i18n="diag_logic"></span></div>
-            <div class="connector"></div>
-            <div class="node"><i data-lucide="droplets"></i><span data-i18n="diag_actuators"></span></div>
-        </div>
-
-        <div class="tech-specs grid-2">
             <div class="card">
-                <h4 data-i18n="specs_title"></h4>
-                <ul class="specs-list">
-                    <li data-i18n="spec_1"></li>
-                    <li data-i18n="spec_2"></li>
-                    <li data-i18n="spec_3"></li>
-                </ul>
+                <h3 data-i18n="intro_title"></h3>
+                <p data-i18n="intro_p1"></p>
             </div>
-            <div class="image-gallery">
-                <img src="img/instalacion-real.jpg" alt="SRIG Real" class="rounded-img">
-                <img src="img/arquitectura.png" alt="Arquitectura" class="rounded-img">
+            <div class="card">
+                <h3 data-i18n="obj_title"></h3>
+                <ul id="obj_list"></ul>
             </div>
         </div>
     </section>
 
-    <!-- GESTIÓN Y RIESGOS -->
+    <!-- SECCIÓN ESTRATEGIA (FODA/PESTEL) -->
+    <section id="estrategia" class="page">
+        <h2 class="section-title" data-i18n="nav_estrategia"></h2>
+        <div class="swot-grid">
+            <div class="swot-item f"><h4 data-i18n="f_t"></h4><p data-i18n="f_d"></p></div>
+            <div class="swot-item o"><h4 data-i18n="o_t"></h4><p data-i18n="o_d"></p></div>
+            <div class="swot-item d"><h4 data-i18n="d_t"></h4><p data-i18n="d_d"></p></div>
+            <div class="swot-item a"><h4 data-i18n="a_t"></h4><p data-i18n="a_d"></p></div>
+        </div>
+        <div class="card pestel">
+            <h3 data-i18n="pestel_title"></h3>
+            <div class="pestel-grid" id="pestel_container"></div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN INGENIERÍA (Diagrama de Arquitectura Real) -->
+    <section id="ingenieria" class="page">
+        <h2 class="section-title" data-i18n="nav_arquitectura"></h2>
+        <div class="arch-diagram">
+            <div class="diag-group">
+                <h5 data-i18n="diag_interface"></h5>
+                <div class="boxes"><div class="b" data-i18n="diag_phys"></div><div class="b" data-i18n="diag_web"></div></div>
+            </div>
+            <div class="connector-v"></div>
+            <div class="diag-row-split">
+                <div class="diag-group main"><h5 data-i18n="diag_core"></h5><p data-i18n="diag_core_d"></p></div>
+                <div class="connector-h"></div>
+                <div class="diag-group"><h5 data-i18n="diag_sensors"></h5><div class="b" data-i18n="diag_flow"></div></div>
+            </div>
+            <div class="connector-v"></div>
+            <div class="diag-group">
+                <h5 data-i18n="diag_actuators"></h5>
+                <div class="boxes"><div class="b" data-i18n="diag_v1"></div><div class="b" data-i18n="diag_v2"></div></div>
+            </div>
+        </div>
+        <div class="img-strip">
+            <img src="img/instalacion-real.jpg" alt="Instalación">
+            <img src="img/arquitectura.png" alt="Hardware">
+        </div>
+    </section>
+
+    <!-- SECCIÓN GESTIÓN (Flujo y Riesgos) -->
     <section id="gestion" class="page">
-        <h2 class="section-title" data-i18n="mgmt_title"></h2>
-        <div class="card table-container">
-            <h4 data-i18n="risks_title"></h4>
+        <h2 class="section-title" data-i18n="nav_gestion"></h2>
+        <div class="flow-diagram-real" id="flow_steps"></div>
+        <div class="card table-card">
+            <h3 data-i18n="risk_title"></h3>
             <table class="data-table">
-                <thead>
-                    <tr><th data-i18n="th_risk"></th><th data-i18n="th_impact"></th><th data-i18n="th_mitigation"></th></tr>
-                </thead>
-                <tbody>
-                    <tr><td data-i18n="r1_n"></td><td data-i18n="r1_i"></td><td data-i18n="r1_m"></td></tr>
-                    <tr><td data-i18n="r2_n"></td><td data-i18n="r2_i"></td><td data-i18n="r2_m"></td></tr>
-                    <tr><td data-i18n="r3_n"></td><td data-i18n="r3_i"></td><td data-i18n="r3_m"></td></tr>
-                </tbody>
+                <thead><tr><th data-i18n="th_r"></th><th data-i18n="th_i"></th><th data-i18n="th_m"></th></tr></thead>
+                <tbody id="risk_body"></tbody>
             </table>
         </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- SECCIÓN MERCADO -->
+    <section id="mercado" class="page">
+        <h2 class="section-title" data-i18n="nav_mercado"></h2>
+        <div class="grid-2">
+            <div class="card chart-box"><canvas id="savingsChart"></canvas></div>
+            <div class="card chart-box"><canvas id="marketChart"></canvas></div>
+        </div>
+        <div class="card references">
+            <h3 data-i18n="ref_title"></h3>
+            <div id="biblio_list"></div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO -->
     <section id="contacto" class="page">
-        <h2 class="section-title" data-i18n="cont_title"></h2>
+        <h2 class="section-title" data-i18n="nav_contacto"></h2>
         <div class="card">
             <table class="data-table">
-                <thead>
-                    <tr><th data-i18n="th_name"></th><th data-i18n="th_role"></th><th>Email</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Ortega Rojas David Alonso</td><td data-i18n="role_dev"></td><td>al24320557@utcj.edu.mx</td></tr>
-                    <tr><td>Alvidrez Garduño Julio Cesar</td><td data-i18n="role_mfg"></td><td>--</td></tr>
-                    <tr><td>Bretado Barrera Carolina</td><td data-i18n="role_proc"></td><td>--</td></tr>
-                    <tr><td>Trujillo López Juana Araceli</td><td data-i18n="role_doc"></td><td>--</td></tr>
-                </tbody>
+                <thead><tr><th data-i18n="th_name"></th><th data-i18n="th_role"></th><th>Email</th></tr></thead>
+                <tbody id="team_body"></tbody>
             </table>
         </div>
     </section>
