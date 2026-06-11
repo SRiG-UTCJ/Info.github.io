@@ -1,0 +1,284 @@
+
+:root {
+  --bg: #f4f6f8;
+  --text: #2b2b2b;
+  --primary: #1f6fae;
+  --secondary: #0d3c55;
+  --card: #ffffff;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #e5e5e5;
+  --card: #1e1e1e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--card);
+  padding: 0.8rem;
+}
+
+.nav a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+header {
+  background: linear-gradient(90deg, #0d3c55, var(--primary));
+  color: white;
+  padding: 1rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 60px;
+}
+
+    ul {
+      padding-left: 1.2rem;
+    }
+.grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+   .highlight {
+      background: var(--card);
+      border-left: 5px solid var(--primary);
+      padding: 1rem;
+      margin: 1.5rem 0;
+    }
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 1.5rem;
+}
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+section {
+  background: var(--card);
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+
+    h3 {
+      margin-bottom: .5rem;
+      color: var(--primary);
+    }
+.diagram {
+  width: 100%;
+  max-width: 700px;
+  display: block;
+  margin: 1rem auto;
+}
+
+footer {
+  background: #0c2f44;
+  color: #cbd6dc;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+    footer strong {
+      color: white;
+    }
+
+    .small {
+      font-size: 0.95rem;
+    }
+
+    .toggle {
+      cursor: pointer;
+      color: var(--primary);
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .hidden {
+      display: none;
+    }
+button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.info-table th {
+  background-color: #1f6fae;
+  color: #ffffff;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.info-table td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  vertical-align: top;
+}
+
+.info-table td strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.page {
+  display: none;
+animation: fadeSlide 0.35s ease;
+}
+
+.page.active {
+  display: block;
+}
+.breadcrumb {
+  max-width: 1100px;
+  margin: 0.75rem auto;
+  padding: 0 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.breadcrumb span {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.breadcrumb .sep {
+  margin: 0 0.4rem;
+}
+.lang-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lang-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+/* Responsive para móvil */
+
+@media (max-width: 600px) {
+.header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+
+  .info-table,
+  .info-table thead,
+  .info-table tbody,
+  .info-table th,
+  .info-table td,
+  .info-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .info-table thead {
+    display: none;
+  }
+
+  .info-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.5rem;
+  }
+
+  .info-table td {
+    border: none;
+    padding: 0.4rem 0;
+  }
+
+  .info-table td::before {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+ content: attr(data-label);
+  }
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--card);
+  padding: 0.75rem;
+}
+
+.nav a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav a.active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+}
