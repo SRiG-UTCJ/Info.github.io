@@ -41,7 +41,7 @@ const i18n = {
         pestel_title: "Análisis de Macroentorno (PESTEL)",
         // Detalles PESTEL
         pest_p: "Existencia de normativas ambientales y programas de reforestación\nPosible apoyo institucional por parte de la universidad\nDependencia de autorizaciones para intervenir áreas del campus.",
-        pest_e: "Presupuesto limitado frente a costos de materiales y árboles.",
+        pest_e: "Presupuesto limitado del proyecto\nCostos de materiales (tubería, árboles, herramientas)\nAportaciones económicas de los integrantes\nDiferencia entre costos estimados vs reales.",
         pest_s: "Beneficio directo a estudiantes y conciencia ambiental creciente.",
         pest_t: "Uso de microcontroladores y automatización de bajo costo.",
         pest_env: "Clima extremo de Juárez y escasez crítica de agua.",
