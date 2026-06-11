@@ -40,8 +40,8 @@ const i18n = {
         foda_a_txt: "Clima extremo que afecta la supervivencia; Vandalismo en el área; Escasez o mala distribución de agua en la red.",
         pestel_title: "Análisis de Macroentorno (PESTEL)",
         // Detalles PESTEL
-        pest_p: "Existencia de normativas ambientales y programas de reforestación\nPosible apoyo institucional por parte de la universidad\nDependencia de autorizaciones para intervenir áreas del campus.",
-        pest_e: "Presupuesto limitado del proyecto\nCostos de materiales (tubería, árboles, herramientas)\nAportaciones económicas de los integrantes\nDiferencia entre costos estimados vs reales.",
+        pest_p: "Existencia de normativas ambientales y programas de reforestación<br>Posible apoyo institucional por parte de la universidad<br>Dependencia de autorizaciones para intervenir áreas del campus.",
+        pest_e: "Presupuesto limitado del proyecto<br>Costos de materiales (tubería, árboles, herramientas)<br>Aportaciones económicas de los integrantes<br>Diferencia entre costos estimados vs reales.",
         pest_s: "Beneficio directo a estudiantes y conciencia ambiental creciente.",
         pest_t: "Uso de microcontroladores y automatización de bajo costo.",
         pest_env: "Clima extremo de Juárez y escasez crítica de agua.",
