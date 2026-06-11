@@ -87,7 +87,7 @@ body {
     text-transform: uppercase;
 }
 
-/* --- MENÚ HAMBURGUESA (Lógica de Escritorio) --- */
+/* --- MENU HAMBURGUESA --- */
 .hamburger {
     display: none;
     background: none;
@@ -97,34 +97,29 @@ body {
     font-size: 1.5rem;
 }
 
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
 .main-nav a {
     text-decoration: none;
     color: var(--text);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    margin: 0 10px;
+    margin: 0 12px;
     padding: 8px 0;
     text-transform: uppercase;
     transition: 0.3s;
+    border-bottom: 2px solid transparent;
 }
 
-.main-nav a:hover, .main-nav a.active { color: var(--primary); }
-
-.header-actions { display: flex; gap: 8px; }
-
-.btn-util {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 8px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
+.main-nav a:hover, .main-nav a.active {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
 }
 
-.btn-util:hover { background: var(--primary); color: white; }
-
-/* --- RESPONSIVO: MENÚ MÓVIL --- */
+/* Estilos móviles del menú */
 @media (max-width: 992px) {
     .hamburger { display: block; }
     
@@ -146,8 +141,12 @@ body {
         animation: slideDown 0.3s ease-out forwards;
     }
 
-    .main-nav a { margin: 10px 0; font-size: 1rem; text-align: center; }
-    .brand-info { display: none; }
+    .main-nav a {
+        margin: 10px 0;
+        font-size: 1rem;
+        text-align: center;
+        width: 100%;
+    }
 }
 
 @keyframes slideDown {
@@ -155,7 +154,22 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- CARDS COLAPSABLES (INTERACTIVAS) --- */
+/* --- TABS (PESTAÑAS) --- */
+.page {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- CARDS & INTERACTIVIDAD --- */
 .card {
     background: var(--card);
     border-radius: 16px;
@@ -171,8 +185,6 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
-.card.collapsible .card-header h3 { margin: 0; color: var(--primary); font-size: 1.2rem; }
 
 .card.collapsible .card-header i {
     transition: transform 0.3s ease;
@@ -195,128 +207,119 @@ body {
     transform: rotate(180deg);
 }
 
-/* --- HERO & KPIs --- */
+/* --- HERO & TITULOS --- */
 .hero {
     text-align: center;
-    padding: 4rem 1rem;
-    background: radial-gradient(circle at top right, rgba(31, 111, 174, 0.12), transparent);
-    border-radius: 30px;
-    margin-bottom: 2.5rem;
+    padding: 3rem 1rem;
+    background: radial-gradient(circle at top right, rgba(31, 111, 174, 0.1), transparent);
+    border-radius: 24px;
+    margin-bottom: 2rem;
 }
 
 .gradient-text {
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-weight: 900;
     background: linear-gradient(135deg, var(--primary), var(--info));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    line-height: 1.1;
 }
 
-.badge {
-    background: var(--primary-dark);
-    color: white;
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    margin: 5px;
-    display: inline-block;
+.section-header {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    border-left: 5px solid var(--primary);
+    padding-left: 15px;
 }
 
-.savings-kpi {
-    display: flex; gap: 15px; margin-top: 20px;
-}
-
-.kpi-box {
-    flex: 1; background: var(--primary); color: white;
-    padding: 1.5rem; border-radius: 15px; text-align: center;
-}
-
-.kpi-box h4 { font-size: 2rem; margin: 0; font-weight: 900; }
-.kpi-box span { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
-
-/* --- ESTRATEGIA: FODA & PESTEL --- */
-.swot-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-}
-
-.swot-item { padding: 1.5rem; border-radius: 12px; color: white; }
-.swot-item h4 { margin-bottom: 8px; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px; }
-
-.swot-item.s { background: var(--accent); }
-.swot-item.w { background: var(--warning); }
-.swot-item.o { background: var(--info); }
-.swot-item.a { background: var(--danger); }
-
-.pestel-container {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;
-}
-
-.pestel-box {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 15px; padding: 1rem; text-align: center;
-}
-
-.pestel-letter {
-    width: 45px; height: 45px; background: var(--primary); color: white;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 10px; font-weight: 900; font-size: 1.3rem;
-}
-
-/* --- DIAGRAMAS TÉCNICOS (CSS REAL) --- */
+/* --- DIAGRAMAS TÉCNICOS (CSS) --- */
 .logic-diag {
-    display: flex; flex-direction: column; align-items: center; padding: 2rem;
-    background: var(--bg); border-radius: 20px; margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: var(--bg);
+    border-radius: 20px;
 }
 
 .diag-node {
-    background: var(--card); border: 2px solid var(--border);
-    padding: 12px 24px; border-radius: 10px; display: flex; align-items: center;
-    gap: 12px; font-weight: 700; font-size: 0.9rem; box-shadow: var(--shadow);
+    background: var(--card);
+    border: 2px solid var(--border);
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
 }
 
-.diag-node.main-cpu { border-color: var(--primary); background: rgba(31, 111, 174, 0.1); color: var(--primary); }
+.diag-node.main-cpu {
+    border-color: var(--primary);
+    background: rgba(31, 111, 174, 0.1);
+    color: var(--primary);
+}
 
-.diag-arrow-v { width: 3px; height: 35px; background: var(--primary); opacity: 0.5; }
+.diag-arrow-v {
+    width: 2px;
+    height: 30px;
+    background: var(--primary);
+    opacity: 0.5;
+}
 
-.diag-branch { display: flex; gap: 30px; margin-top: 25px; position: relative; }
+.diag-branch {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
 
 /* --- FLUJO DE PROCESO --- */
-.flow-chart-container { display: flex; flex-direction: column; align-items: center; margin-top: 2rem; }
+.flow-chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .flow-step-item {
-    background: var(--primary); color: white; width: 100%; max-width: 550px;
-    padding: 18px; border-radius: 10px; display: flex; align-items: center; gap: 15px;
+    background: var(--primary);
+    color: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
+
 .step-circle {
-    width: 35px; height: 35px; background: white; color: var(--primary);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-weight: 900; flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    background: white;
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    flex-shrink: 0;
 }
 
-/* --- TABLAS --- */
-.table-responsive { overflow-x: auto; border-radius: 10px; }
-.tech-table { width: 100%; border-collapse: collapse; background: var(--card); }
-.tech-table th { background: var(--primary); color: white; padding: 14px; text-align: left; font-size: 0.8rem; text-transform: uppercase; }
-.tech-table td { padding: 14px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-
-/* --- FOOTER REORGANIZADO (LOGO A LA IZQUIERDA) --- */
+/* --- FOOTER (LOGO A LA IZQUIERDA) --- */
 .main-footer {
     background: var(--primary-dark);
     color: white;
-    padding: 3.5rem 0;
+    padding: 3rem 0;
     margin-top: 5rem;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: auto;
-    padding: 0 25px;
-    display: flex;
-    justify-content: flex-start; /* Alinea todo el grupo a la izquierda */
+    padding: 0 20px;
 }
 
-.footer-left {
+.footer-brand-group {
     display: flex;
     align-items: center;
     gap: 25px;
@@ -324,26 +327,23 @@ body {
 
 .footer-logo {
     height: 55px;
-    filter: brightness(0) invert(1); /* Logo blanco */
+    filter: brightness(0) invert(1); /* Hace el logo blanco */
 }
 
-.footer-text-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+.footer-text p {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
 }
 
-.footer-text-group p { font-weight: 700; font-size: 1rem; }
-.footer-text-group small { opacity: 0.7; font-weight: 500; }
+.footer-text small {
+    opacity: 0.7;
+    font-weight: 500;
+}
 
-/* --- SECCIÓN LEGAL --- */
-.small-text { font-size: 0.85rem; color: var(--text-light); line-height: 1.8; }
-
-/* --- RESPONSIVIDAD EXTRA --- */
+/* --- RESPONSIVIDAD --- */
 @media (max-width: 768px) {
-    .gradient-text { font-size: 2.2rem; }
+    .gradient-text { font-size: 2rem; }
     .swot-grid { grid-template-columns: 1fr; }
-    .savings-kpi { flex-direction: column; }
-    .diag-branch { flex-direction: column; align-items: center; gap: 15px; }
-    .footer-left { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .footer-brand-group { flex-direction: column; align-items: flex-start; gap: 15px; }
 }
