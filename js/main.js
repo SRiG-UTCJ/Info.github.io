@@ -135,19 +135,26 @@ function renderObjectives(data) {
 function renderPESTEL(data) {
     const container = document.getElementById('pestelGrid');
     if (!container) return;
+    
     const items = [
-        { l: "P", d: data.pest_p }, { l: "E", d: data.pest_e },
-        { l: "S", d: data.pest_s }, { l: "T", d: data.pest_t },
-        { l: "E", d: data.pest_env }, { l: "L", d: data.pest_l }
+        { l: "P", t: data.pest_p_t, d: data.pest_p_d },
+        { l: "E", t: data.pest_e_t, d: data.pest_e_d },
+        { l: "S", t: data.pest_s_t, d: data.pest_s_d },
+        { l: "T", t: data.pest_t_t, d: data.pest_t_d },
+        { l: "E", t: data.pest_env_t, d: data.pest_env_d },
+        { l: "L", t: data.pest_l_t, d: data.pest_l_d }
     ];
-    container.innerHTML = items.map(item => `
+
+    container.innerHTML = items.map(i => `
         <div class="pestel-box">
-            <div class="pestel-letter">${item.l}</div>
-            <p>${item.d}</p>
+            <div class="pestel-letter">${i.l}</div>
+            <div class="pestel-info">
+                <h4>${i.t}</h4>
+                <p>${i.d}</p>
+            </div>
         </div>
     `).join('');
 }
-
 function renderFlow(data) {
     const container = document.getElementById('flowSteps');
     if (!container) return;
@@ -252,28 +259,6 @@ function initChart(lang) {
         }
     });
 }
-function renderPESTEL(data) {
-    const container = document.getElementById('pestelGrid');
-    if (!container) return;
-    
-    const items = [
-        { l: "P", t: data.pest_p_t, d: data.pest_p_d },
-        { l: "E", t: data.pest_e_t, d: data.pest_e_d },
-        { l: "S", t: data.pest_s_t, d: data.pest_s_d },
-        { l: "T", t: data.pest_t_t, d: data.pest_t_d },
-        { l: "E", t: data.pest_env_t, d: data.pest_env_d },
-        { l: "L", t: data.pest_l_t, d: data.pest_l_d }
-    ];
 
-    container.innerHTML = items.map(i => `
-        <div class="pestel-box">
-            <div class="pestel-letter">${i.l}</div>
-            <div class="pestel-info">
-                <h4>${i.t}</h4>
-                <p>${i.d}</p>
-            </div>
-        </div>
-    `).join('');
-}
 
 
