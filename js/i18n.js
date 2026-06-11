@@ -7,7 +7,8 @@ const i18n = {
         nav_arquitectura: "Ingeniería",
         nav_proceso: "Proceso",
         nav_gestion: "Gestión",
-        nav_contacto: "Impacto",
+        nav_legal: "Aviso Legal",
+        nav_contacto: "Contacto",
         footer_text: "SRIG · Proyecto Integrador de Ingeniería · UTCJ",
         footer_location: "Ciudad Juárez, Chihuahua, México",
 
@@ -91,7 +92,12 @@ const i18n = {
         r2_n: "Obstrucción en emisores", r2_i: "Riego ineficiente", r2_m: "Instalación de filtros de sedimentos",
         r3_n: "Vandalismo / Daño externo", r3_i: "Fallas del sistema", r3_m: "Protección física y revisiones periódicas",
 
-        // --- SECCIÓN: CONTACTO & IMPACTO ---
+        // --- AVISO LEGAL ---
+        legal_title: "Términos y Condiciones del Proyecto",
+        legal_p: "SRIG y RATIOMA Systemica son nombres utilizados para un proyecto integrador académico de la Universidad Tecnológica de Ciudad Juárez (UTCJ).",
+        legal_extra: "Toda la información, logotipos y diseños presentados tienen un propósito exclusivamente didáctico para la carrera de Ingeniería en Procesos y Operaciones Industriales.",
+
+        // --- CONTACTO / IMPACTO ---
         impact_title: "Impacto y Equipo",
         cont_title: "Equipo de Proyecto (IPIW32)",
         th_name: "Integrante",
@@ -100,8 +106,8 @@ const i18n = {
         role_mfg: "Ingeniería de Manufactura",
         role_proc: "Control de Procesos",
         role_doc: "Documentación y Calidad",
-        legal_title: "Aviso Legal Académico",
-        legal_p: "SRIG es un proyecto desarrollado con fines educativos por estudiantes de la UTCJ. No es un producto comercial. RATIOMA Systemica S.A. de C.V. es una entidad ficticia para fines de simulación empresarial."
+        footer_text: "SRIG · Proyecto de Ingeniería · UTCJ © 2026",
+        footer_location: "Ciudad Juárez, Chihuahua, México"
     },
 
     en: {
@@ -112,7 +118,8 @@ const i18n = {
         nav_arquitectura: "Engineering",
         nav_proceso: "Process",
         nav_gestion: "Management",
-        nav_contacto: "Impact",
+        nav_legal: "Legal Notice",
+        nav_contacto: "Contact",
         footer_text: "SRIG · Engineering Integrative Project · UTCJ",
         footer_location: "Ciudad Juárez, Chihuahua, Mexico",
 
@@ -193,7 +200,12 @@ const i18n = {
         r2_n: "Emitter clogging", r2_i: "Inefficient irrigation", r2_m: "Sediment filter installation",
         r3_n: "Vandalism / External damage", r3_i: "System failures", r3_m: "Physical protection and periodic reviews",
 
-        // --- SECTION: CONTACT & IMPACT ---
+        // --- LEGAL ---
+        legal_title: "Project Terms and Conditions",
+        legal_p: "SRIG and RATIOMA Systemica are names used for an academic integrative project at the Universidad Tecnológica de Ciudad Juárez (UTCJ).",
+        legal_extra: "All information presented is for exclusively didactic purposes for the Industrial Processes and Operations Engineering program.",
+
+        // --- CONTACT ---
         impact_title: "Impact and Team",
         cont_title: "Project Team (IPIW32)",
         th_name: "Member",
@@ -202,7 +214,7 @@ const i18n = {
         role_mfg: "Manufacturing Engineering",
         role_proc: "Process Control",
         role_doc: "Quality & Documentation",
-        legal_title: "Academic Legal Notice",
-        legal_p: "SRIG is a project developed for educational purposes by UTCJ students. It is not a commercial product. RATIOMA Systemica S.A. de C.V. is a fictitious entity for business simulation purposes."
+        footer_text: "SRIG · Engineering Project · UTCJ © 2026",
+        footer_location: "Ciudad Juárez, Chihuahua, Mexico"
     }
 };
