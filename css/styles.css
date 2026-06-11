@@ -1,64 +1,41 @@
-/* Paleta Industrial Moderna */
 :root {
-    --primary: #1f6fae;
-    --secondary: #0d3c55;
-    --accent: #2ecc71;
-    --bg: #f8fafc;
-    --card: #ffffff;
-    --text: #1e293b;
-    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --primary: #1f6fae; --s: #22c55e; --w: #f59e0b; --o: #3b82f6; --t: #ef4444;
+    --bg: #f8fafc; --card: #ffffff;
 }
 
-body.dark {
-    --bg: #0f172a; --card: #1e293b; --text: #f1f5f9;
+body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; padding-top: 70px; }
+
+/* Diagramas Reales HTML/CSS */
+.diagram-flow {
+    display: flex; align-items: center; justify-content: center; gap: 10px; margin: 3rem 0;
 }
-
-body {
-    margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6;
+.diag-node {
+    background: var(--card); border: 2px solid #e2e8f0; padding: 1.5rem; border-radius: 15px;
+    text-align: center; width: 200px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
 }
+.diag-node.highlight { border-color: var(--primary); background: #f0f9ff; }
+.diag-arrow { width: 40px; height: 2px; background: #cbd5e1; position: relative; }
+.diag-arrow::after { content: '▶'; position: absolute; right: -5px; top: -10px; color: #cbd5e1; }
 
-/* Navbar Estilo Glass */
-.navbar {
-    position: fixed; top: 0; width: 100%; height: 70px; background: rgba(255,255,255,0.8);
-    backdrop-filter: blur(10px); z-index: 1000; display: flex; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05);
+/* SWOT Grid */
+.swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.swot-item { padding: 1.5rem; border-radius: 12px; color: white; }
+.swot-item.s { background: var(--s); }
+.swot-item.w { background: var(--w); }
+.swot-item.o { background: var(--o); }
+.swot-item.t { background: var(--t); }
+
+/* Tablas y Layout */
+.modern-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
+.modern-table th { background: var(--primary); color: white; padding: 15px; text-align: left; }
+.modern-table td { padding: 12px; border-bottom: 1px solid #f1f5f9; }
+
+.tech-images { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.img-preview { width: 45%; max-width: 400px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+@media (max-width: 768px) {
+    .diagram-flow { flex-direction: column; }
+    .diag-arrow { width: 2px; height: 30px; }
+    .diag-arrow::after { content: '▼'; bottom: -10px; right: -7px; }
+    .swot-grid { grid-template-columns: 1fr; }
 }
-
-.nav-container {
-    max-width: 1200px; margin: auto; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 20px;
-}
-
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--secondary); }
-.logo { height: 40px; }
-
-.nav-menu a {
-    text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 600; margin: 0 12px;
-    transition: color 0.3s; text-transform: uppercase; letter-spacing: 1px;
-}
-.nav-menu a:hover { color: var(--primary); }
-
-/* Grid de Negocio (KPIs) */
-.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-.kpi-card { background: var(--primary); color: white; padding: 2rem; border-radius: 20px; text-align: center; box-shadow: var(--shadow); }
-.kpi-card h3 { font-size: 2.5rem; margin: 0; }
-
-/* Infografía de Funcionamiento */
-.infographic { display: flex; align-items: center; justify-content: space-between; background: var(--card); padding: 3rem; border-radius: 24px; margin: 2rem 0; box-shadow: var(--shadow); }
-.info-step { flex: 1; text-align: center; padding: 0 1rem; }
-.step-num { width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold; }
-.info-divider { width: 50px; height: 2px; background: #e2e8f0; }
-
-/* Diagramas Controlados */
-.diag-fixed { max-width: 100%; width: 600px; height: auto; border-radius: 15px; margin: 2rem auto; display: block; box-shadow: var(--shadow); }
-
-/* Animaciones de cambio de página */
-.page { display: none; padding: 100px 20px 40px; max-width: 1100px; margin: auto; }
-.page.active { display: block; animation: slideUp 0.5s ease-out; }
-
-@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-/* Botones */
-.btn-toggle { background: var(--secondary); color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-left: 10px; }
-
-.card-glass { background: var(--card); padding: 2rem; border-radius: 20px; text-align: center; transition: transform 0.3s; border: 1px solid rgba(0,0,0,0.05); }
-.card-glass:hover { transform: translateY(-10px); }
-.card-glass i { color: var(--primary); margin-bottom: 1rem; }
