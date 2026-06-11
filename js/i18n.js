@@ -104,7 +104,7 @@ tflow_5: "Una vez alcanzado el nivel óptimo o el tiempo programado, el sistema 
         // --- AVISO LEGAL ---
         legal_title: "Términos y Condiciones del Proyecto",
         legal_p: "SRIG y RATIOMA Systemica son nombres utilizados para un proyecto integrador académico de la Universidad Tecnológica de Ciudad Juárez (UTCJ).",
-        legal_extra: "Toda la información, logotipos y diseños presentados tienen un propósito exclusivamente didáctico para la carrera de Ingeniería en Procesos y Operaciones Industriales.",
+        legal_extra: "Toda la información, logotipos y diseños presentados tienen un propósito exclusivamente didáctico para la carrera de Ingeniería en Procesos y Operaciones Industriales. SRIG (Sistema de Riego Inteligente por Goteo) es un proyecto académico desarrollado exclusivamente con fines educativos como parte de la integradora IPIW32. <br>El desarrollo y documentación del sistema se realizaron bajo un enfoque académico propio de la carrera de Procesos y Operaciones Industriales.<br>Este sistema no constituye un producto comercial, industrial o certificado, ni está destinado a implementación masiva.<br>La información presentada tiene un carácter informativo, formativo y demostrativo.<br>Cualquier uso, réplica o modificación fuera del entorno académico original es responsabilidad exclusiva de quien lo implemente.<br>La UTCJ y los desarrolladores no asumen responsabilidad por daños derivados de usos no previstos.",
 
         // --- CONTACTO / IMPACTO ---
         impact_title: "Impacto y Equipo",
@@ -222,12 +222,12 @@ tflow_5: "Once the optimal level or scheduled time is reached, the system closes
 
         // --- LEGAL ---
         legal_title: "Project Terms and Conditions",
-        legal_p: "SRIG and RATIOMA Systemica are names used for an academic integrative project at the Universidad Tecnológica de Ciudad Juárez (UTCJ).",
+        legal_p: "SRIG and RATIOMA Systemica are names used for an academic integrative project at the Universidad Tecnológica de Ciudad Juárez (UTCJ).<br>SRIG (Smart Drip Irrigation System) is an academic project developed exclusively for educational purposes as part of the IPIW32 integrative project.<br>The development and documentation of the system were carried out under an academic approach consistent with the Industrial Processes and Operations program.<br>This system does not constitute a commercial, industrial, or certified product and is not intended for large-scale implementation.<br>The information presented is for informational, educational, and demonstrative purposes only.<br>Any replication, modification, or implementation outside the original academic context is the sole responsibility of the party performing it.<br>The Universidad Tecnológica de Ciudad Juárez (UTCJ) and the developers assume no liability for unintended or improper use.",
         legal_extra: "All information presented is for exclusively didactic purposes for the Industrial Processes and Operations Engineering program.",
 
         // --- CONTACT ---
         impact_title: "Impact and Team",
-        cont_title: "Project Team (IPIW32)",
+        cont_title: "Project Team (IPIW42)",
         th_name: "Member",
         th_role: "Responsibility",
         role_dev: "SRIG Development / Technical Lead",
