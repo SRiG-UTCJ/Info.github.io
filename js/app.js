@@ -394,14 +394,27 @@ if ("serviceWorker" in navigator) {
 }
 
 function showPage(id) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.querySelectorAll(".nav a").forEach(a => a.classList.remove("active"));
+  const pages = document.querySelectorAll(".page");
+  
+  pages.forEach(p => {
+    p.style.opacity = "0";
+    setTimeout(() => {
+      p.classList.remove("active");
+      if(p.id === id) {
+        p.classList.add("active");
+        setTimeout(() => {
+          p.style.opacity = "1";
+          // Reiniciar animaciones AOS al cambiar de página
+          AOS.refresh();
+        }, 50);
+      }
+    }, 300);
+  });
 
-  const page = document.getElementById(id);
-  if (page) page.classList.add("active");
-
-  const link = document.querySelector(`.nav a[href="#${id}"]`);
-  if (link) link.classList.add("active");
+  // Actualizar nav links
+  document.querySelectorAll(".nav-link").forEach(a => {
+    a.classList.toggle("active", a.getAttribute("href") === `#${id}`);
+  });
 
   updateBreadcrumb(id);
 }
