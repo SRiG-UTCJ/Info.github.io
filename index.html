@@ -4,141 +4,205 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page_title">SRIG · RATIOMA Systemica</title>
+    <!-- Librerías de Visualización -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="light-theme">
 
 <header class="navbar">
     <div class="nav-container">
         <div class="brand">
-            <img src="img/logo-srig.png" class="logo" alt="Logo">
-            <div class="brand-text">
-                <span class="company">RATIOMA Systemica</span>
-                <span class="project">SRIG · v2.0</span>
+            <img src="img/logo-srig.png" class="logo-img" alt="SRIG Logo">
+            <div class="brand-info">
+                <span class="corp-name">RATIOMA Systemica</span>
+                <span class="proj-tag">Project SRIG v2.0</span>
             </div>
         </div>
-        <nav class="nav-links">
+        <nav class="main-nav">
             <a href="#inicio" data-i18n="nav_inicio"></a>
             <a href="#estrategia" data-i18n="nav_estrategia"></a>
             <a href="#ingenieria" data-i18n="nav_arquitectura"></a>
+            <a href="#proceso" data-i18n="nav_proceso"></a>
             <a href="#gestion" data-i18n="nav_gestion"></a>
-            <a href="#mercado" data-i18n="nav_mercado"></a>
             <a href="#contacto" data-i18n="nav_contacto"></a>
         </nav>
-        <div class="actions">
-            <button id="langToggle" class="btn-sm">EN</button>
-            <button id="themeToggle" class="btn-sm">🌙</button>
+        <div class="header-actions">
+            <button id="langToggle" class="btn-util">EN</button>
+            <button id="themeToggle" class="btn-util">🌙</button>
         </div>
     </div>
 </header>
 
-<main class="content">
-    <!-- SECCIÓN INICIO -->
+<main class="main-content">
+
+    <!-- SECCIÓN 1: INICIO Y JUSTIFICACIÓN -->
     <section id="inicio" class="page active">
         <div class="hero">
             <h1 class="gradient-text" data-i18n="hero_title"></h1>
-            <p class="lead" data-i18n="hero_sub"></p>
-            <div class="badges">
-                <span>PMBOK</span><span>APQP</span><span>LEAN MFG</span>
+            <p class="hero-sub" data-i18n="hero_sub"></p>
+            <div class="methodology-badges">
+                <span class="badge">PMBOK Guide</span>
+                <span class="badge">Lean Manufacturing</span>
+                <span class="badge">APQP Standard</span>
             </div>
         </div>
-        <div class="grid-2">
-            <div class="card">
-                <h3 data-i18n="intro_title"></h3>
+        
+        <div class="grid-layout">
+            <div class="card intro-card">
+                <h3 class="card-title" data-i18n="intro_title"></h3>
                 <p data-i18n="intro_p1"></p>
+                <div class="savings-kpi">
+                    <div class="kpi-box"><h4 data-i18n="kpi_water_val"></h4><span data-i18n="kpi_water_txt"></span></div>
+                    <div class="kpi-box"><h4 data-i18n="kpi_eff_val"></h4><span data-i18n="kpi_eff_txt"></span></div>
+                </div>
             </div>
-            <div class="card">
-                <h3 data-i18n="obj_title"></h3>
-                <ul id="obj_list"></ul>
+            <div class="card obj-card">
+                <h3 class="card-title" data-i18n="obj_title"></h3>
+                <ul class="check-list" id="objectiveList">
+                    <!-- Dinámico desde JS -->
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN ESTRATEGIA (FODA/PESTEL) -->
+    <!-- SECCIÓN 2: ESTRATEGIA (FODA & PESTEL) -->
     <section id="estrategia" class="page">
-        <h2 class="section-title" data-i18n="nav_estrategia"></h2>
+        <h2 class="section-header" data-i18n="str_title"></h2>
+        
+        <!-- Matriz FODA -->
+        <h3 class="sub-header" data-i18n="foda_title"></h3>
         <div class="swot-grid">
-            <div class="swot-item f"><h4 data-i18n="f_t"></h4><p data-i18n="f_d"></p></div>
-            <div class="swot-item o"><h4 data-i18n="o_t"></h4><p data-i18n="o_d"></p></div>
-            <div class="swot-item d"><h4 data-i18n="d_t"></h4><p data-i18n="d_d"></p></div>
-            <div class="swot-item a"><h4 data-i18n="a_t"></h4><p data-i18n="a_d"></p></div>
+            <div class="swot-item s"><h4 data-i18n="foda_f"></h4><p data-i18n="foda_f_txt"></p></div>
+            <div class="swot-item w"><h4 data-i18n="foda_d"></h4><p data-i18n="foda_d_txt"></p></div>
+            <div class="swot-item o"><h4 data-i18n="foda_o"></h4><p data-i18n="foda_o_txt"></p></div>
+            <div class="swot-item a"><h4 data-i18n="foda_a"></h4><p data-i18n="foda_a_txt"></p></div>
         </div>
-        <div class="card pestel">
-            <h3 data-i18n="pestel_title"></h3>
-            <div class="pestel-grid" id="pestel_container"></div>
+
+        <!-- Análisis PESTEL -->
+        <h3 class="sub-header" data-i18n="pestel_title"></h3>
+        <div class="pestel-container" id="pestelGrid">
+            <!-- Se llena dinámicamente con JS para P, E, S, T, E, L -->
         </div>
     </section>
 
-    <!-- SECCIÓN INGENIERÍA (Diagrama de Arquitectura Real) -->
+    <!-- SECCIÓN 3: INGENIERÍA Y HARDWARE -->
     <section id="ingenieria" class="page">
-        <h2 class="section-title" data-i18n="nav_arquitectura"></h2>
-        <div class="arch-diagram">
-            <div class="diag-group">
-                <h5 data-i18n="diag_interface"></h5>
-                <div class="boxes"><div class="b" data-i18n="diag_phys"></div><div class="b" data-i18n="diag_web"></div></div>
-            </div>
-            <div class="connector-v"></div>
-            <div class="diag-row-split">
-                <div class="diag-group main"><h5 data-i18n="diag_core"></h5><p data-i18n="diag_core_d"></p></div>
-                <div class="connector-h"></div>
-                <div class="diag-group"><h5 data-i18n="diag_sensors"></h5><div class="b" data-i18n="diag_flow"></div></div>
-            </div>
-            <div class="connector-v"></div>
-            <div class="diag-group">
-                <h5 data-i18n="diag_actuators"></h5>
-                <div class="boxes"><div class="b" data-i18n="diag_v1"></div><div class="b" data-i18n="diag_v2"></div></div>
+        <h2 class="section-header" data-i18n="eng_title"></h2>
+        
+        <div class="arch-diagram-wrapper">
+            <h3 class="sub-header" data-i18n="diag_arch_title"></h3>
+            <!-- Diagrama Real Programado (No imagen) -->
+            <div class="logic-diag">
+                <div class="diag-node glass"><i data-lucide="monitor"></i><span data-i18n="diag_node_ui"></span></div>
+                <div class="diag-arrow-v"></div>
+                <div class="diag-node main-cpu"><i data-lucide="cpu"></i><span data-i18n="diag_node_core"></span></div>
+                <div class="diag-branch">
+                    <div class="diag-node"><i data-lucide="settings-2"></i><span data-i18n="diag_node_act"></span></div>
+                    <div class="diag-node"><i data-lucide="gauge"></i><span data-i18n="diag_node_sens"></span></div>
+                </div>
             </div>
         </div>
-        <div class="img-strip">
-            <img src="img/instalacion-real.jpg" alt="Instalación">
-            <img src="img/arquitectura.png" alt="Hardware">
+
+        <div class="grid-layout">
+            <div class="card specs-card">
+                <h3 data-i18n="specs_title"></h3>
+                <table class="specs-table" id="specsTable">
+                    <!-- Dinámico -->
+                </table>
+            </div>
+            <div class="image-showcase">
+                <div class="img-box"><img src="img/instalacion-real.jpg" alt="Instalación"><span data-i18n="img_cap_1"></span></div>
+                <div class="img-box"><img src="img/arquitectura.png" alt="Hardware"><span data-i18n="img_cap_2"></span></div>
+            </div>
         </div>
     </section>
 
-    <!-- SECCIÓN GESTIÓN (Flujo y Riesgos) -->
+    <!-- SECCIÓN 4: PROCESO OPERATIVO -->
+    <section id="proceso" class="page">
+        <h2 class="section-header" data-i18n="proc_title"></h2>
+        <p class="section-desc" data-i18n="proc_desc"></p>
+
+        <div class="flow-chart-container" id="flowSteps">
+            <!-- Diagrama de Flujo Vertical Dinámico -->
+        </div>
+
+        <div class="card warning-card">
+            <i data-lucide="alert-triangle"></i>
+            <p data-i18n="proc_safety_note"></p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 5: GESTIÓN (EDT/WBS & RIESGOS) -->
     <section id="gestion" class="page">
-        <h2 class="section-title" data-i18n="nav_gestion"></h2>
-        <div class="flow-diagram-real" id="flow_steps"></div>
-        <div class="card table-card">
-            <h3 data-i18n="risk_title"></h3>
-            <table class="data-table">
-                <thead><tr><th data-i18n="th_r"></th><th data-i18n="th_i"></th><th data-i18n="th_m"></th></tr></thead>
-                <tbody id="risk_body"></tbody>
+        <h2 class="section-header" data-i18n="mgmt_title"></h2>
+        
+        <!-- Estructura de Desglose de Trabajo -->
+        <h3 class="sub-header" data-i18n="edt_title"></h3>
+        <div class="edt-timeline" id="edtTimeline">
+            <!-- Fases: Inicio, Planeación, Ingeniería, Ejecución, Cierre -->
+        </div>
+
+        <!-- Matriz de Riesgos -->
+        <h3 class="sub-header" data-i18n="risk_title"></h3>
+        <div class="table-responsive card">
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th data-i18n="th_risk"></th>
+                        <th data-i18n="th_impact"></th>
+                        <th data-i18n="th_mitigation"></th>
+                    </tr>
+                </thead>
+                <tbody id="riskTableBody">
+                    <!-- Dinámico -->
+                </tbody>
             </table>
         </div>
     </section>
 
-    <!-- SECCIÓN MERCADO -->
-    <section id="mercado" class="page">
-        <h2 class="section-title" data-i18n="nav_mercado"></h2>
-        <div class="grid-2">
-            <div class="card chart-box"><canvas id="savingsChart"></canvas></div>
-            <div class="card chart-box"><canvas id="marketChart"></canvas></div>
-        </div>
-        <div class="card references">
-            <h3 data-i18n="ref_title"></h3>
-            <div id="biblio_list"></div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN CONTACTO -->
+    <!-- SECCIÓN 6: IMPACTO Y CONTACTO -->
     <section id="contacto" class="page">
-        <h2 class="section-title" data-i18n="nav_contacto"></h2>
-        <div class="card">
-            <table class="data-table">
-                <thead><tr><th data-i18n="th_name"></th><th data-i18n="th_role"></th><th>Email</th></tr></thead>
-                <tbody id="team_body"></tbody>
-            </table>
+        <h2 class="section-header" data-i18n="impact_title"></h2>
+        <div class="grid-layout">
+            <div class="card chart-container">
+                <canvas id="impactChart"></canvas>
+            </div>
+            <div class="card contact-list">
+                <h3 data-i18n="cont_title"></h3>
+                <div class="table-responsive">
+                    <table class="tech-table mini">
+                        <thead>
+                            <tr><th data-i18n="th_name"></th><th data-i18n="th_role"></th></tr>
+                        </thead>
+                        <tbody id="teamTableBody">
+                            <!-- Dinámico -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card legal-box">
+            <h4 data-i18n="legal_title"></h4>
+            <p class="small-text" data-i18n="legal_p"></p>
         </div>
     </section>
+
 </main>
 
-<footer class="footer">
-    <p data-i18n="footer_text"></p>
+<footer class="main-footer">
+    <div class="footer-container">
+        <p data-i18n="footer_text"></p>
+        <div class="footer-links">
+            <span data-i18n="footer_location"></span>
+            <img src="img/logo-srig.png" alt="UTCJ Logo" class="footer-logo">
+        </div>
+    </div>
 </footer>
 
+<!-- Scripts -->
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 </body>
