@@ -1,27 +1,26 @@
-let chart;
+let efficiencyChart;
 
-function createChart(lang) {
-    const ctx = document.getElementById('efficiencyChart').getContext('2d');
-    if(chart) chart.destroy();
+function initChart(lang) {
+    const ctx = document.getElementById('savingsChart').getContext('2d');
+    if (efficiencyChart) efficiencyChart.destroy();
 
-    const labels = [i18n[lang].chart_label_manual, i18n[lang].chart_label_srig];
-    
-    chart = new Chart(ctx, {
+    efficiencyChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: labels,
+            labels: [i18n[lang].chart_manual, i18n[lang].chart_srig],
             datasets: [{
-                data: [100, 60],
+                data: [100, 55], // Basado en el ahorro del 45% promedio del PDF
                 backgroundColor: ['#cbd5e1', '#1f6fae'],
-                borderRadius: 8
+                borderRadius: 10
             }]
         },
         options: {
-            plugins: { 
-                title: { display: true, text: lang === 'es' ? 'Eficiencia de Consumo %' : 'Consumption Efficiency %' },
-                legend: { display: false }
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                title: { display: true, text: lang === 'es' ? 'Eficiencia de Consumo %' : 'Consumption Efficiency %' }
             },
-            scales: { y: { max: 100, beginAtZero: true } }
+            scales: { y: { beginAtZero: true, max: 100 } }
         }
     });
 }
@@ -33,18 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const applyLang = (l) => {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if(i18n[l][key]) el.innerHTML = i18n[l][key];
+            if (i18n[l][key]) el.textContent = i18n[l][key];
         });
         document.getElementById('langToggle').textContent = l === 'es' ? 'EN' : 'ES';
         localStorage.setItem('lang', l);
-        createChart(l); // Actualizar gráfica
+        initChart(l);
     };
 
-    // Navegación
     const handleRoute = () => {
         const id = location.hash.replace('#', '') || 'inicio';
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(id)?.classList.add('active');
+        const target = document.getElementById(id);
+        if (target) target.classList.add('active');
         window.scrollTo(0,0);
     };
 
@@ -52,6 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('langToggle').addEventListener('click', () => {
         currentLang = currentLang === 'es' ? 'en' : 'es';
         applyLang(currentLang);
+    });
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        document.getElementById('themeToggle').textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
     });
 
     applyLang(currentLang);
